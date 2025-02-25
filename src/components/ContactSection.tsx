@@ -7,7 +7,7 @@ const ContactSection = () => {
     email: '',
     company: '',
     message: '',
-    interested: []
+    interested: [] as string[]
   });
 
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
