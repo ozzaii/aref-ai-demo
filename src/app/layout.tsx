@@ -19,7 +19,21 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="bg-dark text-light antialiased">
+      <head>
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            (function() {
+              // Fix base URL issues in GitHub Pages
+              const base = document.createElement('base');
+              base.href = window.location.pathname.includes('/aref-ai-demo') 
+                ? '/aref-ai-demo/' 
+                : '/';
+              document.head.appendChild(base);
+            })();
+          `
+        }} />
+      </head>
+      <body className="bg-dark text-white">
         {children}
       </body>
     </html>

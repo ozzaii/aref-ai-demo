@@ -9,7 +9,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "predeploy": "npm run build && touch out/.nojekyll && echo \"ozzaii.github.io\" > out/CNAME",
+    "predeploy": "npm run build && touch out/.nojekyll",
     "deploy": "gh-pages -d out --dotfiles",
     "export": "next build"
   },
