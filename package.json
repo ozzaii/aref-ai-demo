@@ -1,0 +1,46 @@
+{
+  "name": "arefaidemo",
+  "version": "1.0.0",
+  "private": true,
+  "homepage": "https://ozzaii.github.io/aref-ai-demo",
+  "description": "Enterprise AI Consulting Landing Page",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d out",
+    "export": "next build && next export"
+  },
+  "keywords": [
+    "ai",
+    "consulting",
+    "enterprise",
+    "landing page"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@react-three/drei": "^9.0.4",
+    "@react-three/fiber": "^9.0.4",
+    "@types/node": "^20.11.20",
+    "@types/react": "^18.2.57",
+    "@types/react-dom": "^18.2.19",
+    "framer-motion": "^11.0.6",
+    "gsap": "^3.12.5",
+    "next": "^14.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.71.1",
+    "three": "^0.161.0",
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.0.8",
+    "autoprefixer": "^10.4.17",
+    "gh-pages": "^6.3.0",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1"
+  }
+}
