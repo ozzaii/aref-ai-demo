@@ -1244,7 +1244,10 @@
     <section id="contact" class="section contact">
         <h2 class="section-title">Ready to Transform Your Enterprise with Efficient, Programmable Intelligence?</h2>
         <div class="contact-form">
-            <form id="contactForm" onsubmit="openEmail(); return false;">
+            <form id="contactForm" action="https://formspree.io/f/xdoqbwjk" method="POST">
+                <input type="hidden" name="_subject" value="New Nanominds Enterprise Inquiry">
+                <input type="hidden" name="_next" value="https://nanominds.ai/thanks.html">
+                
                 <div class="form-group">
                     <label for="email">Your Email</label>
                     <input type="email" id="email" name="email" placeholder="Where can we reach you?" required>
@@ -1269,20 +1272,6 @@
                 </div>
                 <button type="submit" class="submit-button">Begin Your AI Transformation</button>
             </form>
-            
-            <script>
-                function openEmail() {
-                    const email = document.getElementById('email').value;
-                    const industry = document.getElementById('industry').value;
-                    const deployment = document.getElementById('deployment').value;
-                    const message = document.getElementById('message').value;
-                    
-                    const subject = "Nanominds Enterprise Inquiry";
-                    const body = `Email: ${email}\nIndustry: ${industry}\nPreferred Deployment: ${deployment}\n\nMessage:\n${message}`;
-                    
-                    window.location.href = `mailto:omer@nanominds.ai?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-                }
-            </script>
             <div class="whisper" style="text-align: center; margin-top: 20px; font-size: 0.9rem; opacity: 0.7;">
                 Limited enterprise partner spots available. Your submission will be sent directly to our leadership team.
             </div>
