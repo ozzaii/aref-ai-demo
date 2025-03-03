@@ -84,7 +84,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Start the animation loop
     const animationInterval = setInterval(animateSprite, currentSpeed);
     
-    // Function to trigger node visitation effect
+    // Function to create an atomic thought particle
+    function createAtomicThought(x, y) {
+        const thought = document.createElement('div');
+        thought.className = 'atomic-thought';
+        thought.style.left = x + 'px';
+        thought.style.top = y + 'px';
+        logoContainer.appendChild(thought);
+        
+        // Remove the element after animation completes
+        setTimeout(() => {
+            thought.remove();
+        }, 1000);
+    }
+    
     function visitNode(nodeIndex) {
         // Add visited class to the node
         neuralNodes[nodeIndex].classList.add('node-visited');
@@ -93,6 +106,23 @@ document.addEventListener('DOMContentLoaded', () => {
         const connections = document.querySelectorAll('.neural-connection');
         if (connections.length > nodeIndex) {
             connections[nodeIndex].classList.add('connection-active');
+        }
+        
+        // Create several atomic thought particles at this node
+        const nodeRect = neuralNodes[nodeIndex].getBoundingClientRect();
+        const logoRect = logoContainer.getBoundingClientRect();
+        
+        // Position relative to the logo container
+        const nodeX = nodeRect.left - logoRect.left + 3; // center of node
+        const nodeY = nodeRect.top - logoRect.top + 3;  // center of node
+        
+        // Create multiple thought particles with slight randomization
+        for (let i = 0; i < 3; i++) {
+            setTimeout(() => {
+                const offsetX = Math.random() * 10 - 5;
+                const offsetY = Math.random() * 10 - 5;
+                createAtomicThought(nodeX + offsetX, nodeY + offsetY);
+            }, i * 200);
         }
         
         // Remove the class after the animation completes
@@ -110,16 +140,16 @@ document.addEventListener('DOMContentLoaded', () => {
     spriteContainer.style.top = '50%';
     spriteContainer.style.transform = 'translateY(-50%)';
     
-    // Only start the flight animation after a delay
+    // Set slower wing flapping in static position
+    clearInterval(animationInterval);
+    currentSpeed = frameDuration * 1.5; // Slower at rest
+    let staticAnimationInterval = setInterval(animateSprite, currentSpeed);
+    
+    // Start the flight animation after a delay
     setTimeout(() => {
-        // Start with slightly slower wing flapping in static position
-        clearInterval(animationInterval);
-        currentSpeed = frameDuration * 1.5; // Slower at rest
-        animationInterval = setInterval(animateSprite, currentSpeed);
-        
-        // Then after a delay, start the flight animation
-        setTimeout(startFlightAnimation, 3000);
-    }, 1000);
+        clearInterval(staticAnimationInterval);
+        startFlightAnimation();
+    }, 3000);
     
     // Flight path animation setup with precise timing for node interactions
     function startFlightAnimation() {
