@@ -162,46 +162,30 @@
             transform: scale(1.02);
         }
         
-        .logo-hummingbird {
+        /* Hummingbird Sprite Animation */
+        .hummingbird-sprite-container {
             position: absolute;
             width: 40px;
             height: 40px;
             top: 50%;
             left: 20px;
             transform: translateY(-50%);
-            z-index: 10;
-            filter: drop-shadow(0 0 2px rgba(99, 102, 241, 0.5));
+            z-index: 20;
+            filter: drop-shadow(0 0 3px rgba(99, 102, 241, 0.7));
             will-change: transform, left, top;
         }
         
-        .animated-hummingbird {
+        .hummingbird-sprite {
             position: absolute;
             width: 100%;
             height: 100%;
             top: 0;
             left: 0;
-            z-index: 15;
         }
         
-        /* Override animations directly in stylesheet to ensure they apply */
-        #wing {
-            animation: wingFlap 0.05s infinite alternate linear !important;
-            transform-origin: 20px 16px !important;
-        }
-        
-        .secondaryWing {
-            animation: secondaryWingFlap 0.05s infinite alternate linear !important;
-            transform-origin: 18px 16px !important;
-        }
-        
-        @keyframes wingFlap {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(-25deg); }
-        }
-        
-        @keyframes secondaryWingFlap {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(-15deg); }
+        /* Maintain for compatibility with existing code */
+        .logo-hummingbird {
+            display: none; /* Hide the original static image */
         }
 
         h1 {
@@ -1434,8 +1418,8 @@
         });
     </script>
     
-    <!-- Hummingbird Animation Script -->
-    <script src="js/hummingbird-animation.js"></script>
+    <!-- Sprite-based Hummingbird Animation Script -->
+    <script src="js/sprite-animation.js"></script>
     
     <script>
     </script>
