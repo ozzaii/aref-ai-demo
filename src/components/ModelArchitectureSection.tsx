@@ -132,9 +132,9 @@ def create_efficient_model(domain="medical_imaging", task="anomaly_detection", d
         # Create architecture that can scale from data center to edge
         model_architecture = ArchitectDesigner.create_scalable(
             atomic_units=atomic_thought_units,
-            scaling_range={"min_complexity": "minimal", "max_complexity": "full"},
-            intelligence_threshold="high",  # Maintain exceptional capability
-            efficiency_priority="maximum"  # Prioritize breakthrough efficiency
+            scaling_range={"min_complexity": 0.05, "max_complexity": 1.0},
+            intelligence_threshold=0.97,  # 97% of full model capability
+            efficiency_priority=0.8  # High priority on efficiency
         )
         
     # 3. Compose atomic thought units into efficient cognitive structures
