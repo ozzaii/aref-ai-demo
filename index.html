@@ -895,10 +895,34 @@
         <div class="logo-container">
             <div class="custom-logo">
                 <div class="neural-logo">
+                    <svg class="hummingbird-logo" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Hummingbird shape -->
+                        <path class="hummingbird" d="M35,20 C38,15 45,18 42,22 C40,25 36,24 35,20 Z" />
+                        <path class="hummingbird-wing" d="M38,17 C42,14 46,16 44,19 C42,21 39,19 38,17 Z" />
+                        <path class="hummingbird-tail" d="M35,20 C32,22 30,25 32,26 C34,27 36,23 35,20 Z" />
+                        <path class="hummingbird-beak" d="M42,22 C46,21 50,20 48,22 C46,23 44,23 42,22 Z" />
+                        
+                        <!-- Connection lines -->
+                        <line class="connection" x1="48" y1="22" x2="60" y2="20" />
+                        <line class="connection" x1="44" y1="19" x2="55" y2="15" />
+                        <line class="connection" x1="32" y1="26" x2="50" y2="30" />
+                        
+                        <!-- Neural nodes -->
+                        <circle class="node" cx="60" cy="20" r="2" />
+                        <circle class="node" cx="55" cy="15" r="1.5" />
+                        <circle class="node" cx="50" cy="30" r="1.8" />
+                        <circle class="node" cx="70" cy="17" r="1.6" />
+                        <circle class="node" cx="75" cy="25" r="1.7" />
+                        <circle class="node" cx="85" cy="20" r="1.9" />
+                        
+                        <!-- Additional connections -->
+                        <line class="connection" x1="60" y1="20" x2="70" y2="17" />
+                        <line class="connection" x1="60" y1="20" x2="75" y2="25" />
+                        <line class="connection" x1="70" y1="17" x2="85" y2="20" />
+                        <line class="connection" x1="75" y1="25" x2="85" y2="20" />
+                    </svg>
                     <div class="neural-connection connection-1"></div>
                     <div class="neural-connection connection-2"></div>
-                    <div class="neural-connection connection-3"></div>
-                    <div class="neural-connection connection-4"></div>
                 </div>
             </div>
         </div>
@@ -1128,6 +1152,82 @@
             -webkit-text-fill-color: transparent;
         }
         
+        /* Hummingbird SVG styles */
+        .hummingbird-logo {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .hummingbird {
+            fill: var(--primary-color);
+            stroke: var(--primary-dark);
+            stroke-width: 0.5;
+            animation: hover 3s infinite alternate ease-in-out;
+        }
+        
+        .hummingbird-wing {
+            fill: var(--accent-color);
+            stroke: var(--accent-color);
+            stroke-width: 0.5;
+            animation: flap 0.3s infinite alternate ease-in-out;
+            transform-origin: 42px 17px;
+        }
+        
+        .hummingbird-tail {
+            fill: var(--primary-dark);
+            stroke: var(--primary-color);
+            stroke-width: 0.5;
+            animation: tail-wag 2s infinite alternate ease-in-out;
+            transform-origin: 35px 20px;
+        }
+        
+        .hummingbird-beak {
+            fill: var(--accent-secondary);
+            stroke: var(--accent-secondary);
+            stroke-width: 0.5;
+        }
+        
+        .connection {
+            stroke: var(--accent-color);
+            stroke-width: 0.5;
+            stroke-dasharray: 12;
+            stroke-dashoffset: 24;
+            animation: dash 3s infinite linear;
+        }
+        
+        .node {
+            fill: var(--primary-color);
+            opacity: 0.8;
+            animation: glow 4s infinite alternate ease-in-out;
+        }
+        
+        @keyframes hover {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-2px); }
+        }
+        
+        @keyframes flap {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(-20deg); }
+        }
+        
+        @keyframes tail-wag {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(5deg); }
+        }
+        
+        @keyframes dash {
+            to { stroke-dashoffset: 0; }
+        }
+        
+        @keyframes glow {
+            0% { opacity: 0.5; r: 90%; }
+            100% { opacity: 0.9; r: 110%; }
+        }
+        
         /* Neural connection animation */
         .neural-connection {
             position: absolute;
@@ -1140,33 +1240,17 @@
         .connection-1 {
             width: 30px;
             transform: rotate(45deg);
-            top: 20px;
-            left: 25px;
+            top: 50px;
+            left: 35px;
             animation-delay: 0s;
         }
         
         .connection-2 {
             width: 40px;
             transform: rotate(-30deg);
-            top: 35px;
-            left: 65px;
+            top: 25px;
+            left: 75px;
             animation-delay: 1s;
-        }
-        
-        .connection-3 {
-            width: 25px;
-            transform: rotate(60deg);
-            top: 40px;
-            left: 110px;
-            animation-delay: 2s;
-        }
-        
-        .connection-4 {
-            width: 35px;
-            transform: rotate(-15deg);
-            top: 15px;
-            left: 90px;
-            animation-delay: 3s;
         }
         
         @keyframes pulse {
@@ -1283,10 +1367,34 @@
             <div style="margin-bottom: 20px;">
                 <div class="custom-logo" style="transform: scale(0.8);">
                     <div class="neural-logo">
+                        <svg class="hummingbird-logo" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Hummingbird shape -->
+                            <path class="hummingbird" d="M35,20 C38,15 45,18 42,22 C40,25 36,24 35,20 Z" />
+                            <path class="hummingbird-wing" d="M38,17 C42,14 46,16 44,19 C42,21 39,19 38,17 Z" />
+                            <path class="hummingbird-tail" d="M35,20 C32,22 30,25 32,26 C34,27 36,23 35,20 Z" />
+                            <path class="hummingbird-beak" d="M42,22 C46,21 50,20 48,22 C46,23 44,23 42,22 Z" />
+                            
+                            <!-- Connection lines -->
+                            <line class="connection" x1="48" y1="22" x2="60" y2="20" />
+                            <line class="connection" x1="44" y1="19" x2="55" y2="15" />
+                            <line class="connection" x1="32" y1="26" x2="50" y2="30" />
+                            
+                            <!-- Neural nodes -->
+                            <circle class="node" cx="60" cy="20" r="2" />
+                            <circle class="node" cx="55" cy="15" r="1.5" />
+                            <circle class="node" cx="50" cy="30" r="1.8" />
+                            <circle class="node" cx="70" cy="17" r="1.6" />
+                            <circle class="node" cx="75" cy="25" r="1.7" />
+                            <circle class="node" cx="85" cy="20" r="1.9" />
+                            
+                            <!-- Additional connections -->
+                            <line class="connection" x1="60" y1="20" x2="70" y2="17" />
+                            <line class="connection" x1="60" y1="20" x2="75" y2="25" />
+                            <line class="connection" x1="70" y1="17" x2="85" y2="20" />
+                            <line class="connection" x1="75" y1="25" x2="85" y2="20" />
+                        </svg>
                         <div class="neural-connection connection-1"></div>
                         <div class="neural-connection connection-2"></div>
-                        <div class="neural-connection connection-3"></div>
-                        <div class="neural-connection connection-4"></div>
                     </div>
                 </div>
             </div>
