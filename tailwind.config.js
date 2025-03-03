@@ -42,12 +42,18 @@ module.exports = {
         mono: ['var(--font-roboto-mono)', 'monospace'],
       },
       animation: {
-        'fade-in': 'fadeIn 0.5s ease-in-out',
+        'fade-in': 'fadeIn 0.5s ease-in-out forwards',
+        'fade-in-delay-1': 'fadeIn 0.5s ease-in-out 1s forwards',
+        'fade-in-delay-2': 'fadeIn 0.5s ease-in-out 1.5s forwards',
+        'fade-in-delay-3': 'fadeIn 0.5s ease-in-out 2s forwards',
+        'fade-in-delay-4': 'fadeIn 0.5s ease-in-out 2.5s forwards',
+        'fade-in-delay-5': 'fadeIn 0.5s ease-in-out 3s forwards',
+        'fade-in-delay-6': 'fadeIn 0.5s ease-in-out 3.5s forwards',
         'slide-up': 'slideUp 0.5s ease-out',
         'slide-down': 'slideDown 0.5s ease-out',
         'slide-left': 'slideLeft 0.5s ease-out',
         'slide-right': 'slideRight 0.5s ease-out',
-        'typing': 'typing 3.5s steps(40, end), blink-caret .75s step-end infinite',
+        'typing': 'typing 2s steps(40, end), blink-caret .75s step-end infinite',
       },
       keyframes: {
         fadeIn: {

@@ -2,242 +2,136 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
 const ContactSection = () => {
-  const [formState, setFormState] = useState({
-    name: '',
-    email: '',
-    company: '',
-    message: '',
-    interested: [] as string[]
-  });
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
-  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormState(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value, checked } = e.target;
-    setFormState(prev => {
-      if (checked) {
-        return {
-          ...prev,
-          interested: [...prev.interested, value]
-        };
-      } else {
-        return {
-          ...prev,
-          interested: prev.interested.filter(item => item !== value)
-        };
-      }
-    });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setFormStatus('submitting');
-    
-    // Simulate form submission
-    setTimeout(() => {
-      setFormStatus('success');
-      setFormState({
-        name: '',
-        email: '',
-        company: '',
-        message: '',
-        interested: []
+    setStatus('loading');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, message }),
       });
-    }, 1500);
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message');
+      }
+
+      setStatus('success');
+      setEmail('');
+      setMessage('');
+
+      // Reset success status after 3 seconds
+      setTimeout(() => {
+        setStatus('idle');
+      }, 3000);
+    } catch (error) {
+      setStatus('error');
+      setErrorMessage(error instanceof Error ? error.message : 'Failed to send message');
+    }
   };
 
   return (
-    <section id="demo" className="py-20 relative bg-gradient-to-t from-dark to-dark/90">
+    <section id="contact" className="py-20 relative overflow-hidden">
+      {/* Subtle background effects */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-dark/98 via-dark to-dark/95"></div>
+        <div className="absolute top-[20%] left-[10%] w-[30%] h-[30%] bg-blue-500/5 rounded-full filter blur-3xl opacity-20"></div>
+        <div className="absolute bottom-[10%] right-[20%] w-[25%] h-[25%] bg-blue-400/5 rounded-full filter blur-3xl opacity-20"></div>
+      </div>
+
       <div className="container-custom relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true, margin: '-100px' }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              <span className="gradient-text">Ready to Transform Your Enterprise?</span>
-            </h2>
-            <p className="text-lg text-gray-300 mb-8">
-              Schedule a personalized demo to see how our AI solutions can address your specific business challenges.
-            </p>
-            
-            <div className="space-y-8">
-              <div className="flex items-start">
-                <div className="bg-primary-600 rounded-full p-2 mr-4 mt-1">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2 text-white">Tailored Solutions</h3>
-                  <p className="text-gray-400">Custom AI solutions designed specifically for your industry and business needs.</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start">
-                <div className="bg-primary-600 rounded-full p-2 mr-4 mt-1">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2 text-white">Expert Guidance</h3>
-                  <p className="text-gray-400">Our team of AI specialists will guide you through implementation and optimization.</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start">
-                <div className="bg-primary-600 rounded-full p-2 mr-4 mt-1">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2 text-white">ROI-Focused</h3>
-                  <p className="text-gray-400">Clear metrics and outcomes to demonstrate tangible business value.</p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true, margin: '-100px' }}
+          className="max-w-2xl mx-auto text-center"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
+              Connect with nanominds
+            </span>
+          </h2>
           
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true, margin: '-100px' }}
-          >
-            <div className="card backdrop-blur-md bg-white/5 p-8">
-              <h3 className="text-2xl font-bold mb-6 text-center text-white">Request a Demo</h3>
+          <p className="text-lg text-gray-300 font-light mb-12">
+            Discover how our orchestrated tiny models can transform your domain expertise 
+            into powerful intelligent systems.
+          </p>
+
+          <div className="bg-black/40 backdrop-blur-sm rounded-xl border border-blue-500/10 p-8 shadow-2xl">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <input
+                  type="email"
+                  placeholder="Your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="w-full bg-dark/60 border border-blue-500/10 rounded-lg px-4 py-3 text-gray-300 placeholder-gray-500 focus:outline-none focus:border-blue-400/30 transition-colors"
+                />
+              </div>
               
-              {formStatus === 'success' ? (
-                <motion.div 
-                  className="text-center py-10 space-y-4"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.3 }}
+              <div>
+                <textarea
+                  placeholder="Tell us about your domain"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  required
+                  rows={3}
+                  className="w-full bg-dark/60 border border-blue-500/10 rounded-lg px-4 py-3 text-gray-300 placeholder-gray-500 focus:outline-none focus:border-blue-400/30 transition-colors resize-none"
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                disabled={status === 'loading'}
+                className={`w-full btn-primary py-3 rounded-lg font-medium transition-all duration-200 ${
+                  status === 'loading' ? 'opacity-70 cursor-not-allowed' : ''
+                }`}
+              >
+                {status === 'loading' ? 'Sending...' : 'Initiate Connection'}
+              </button>
+
+              {/* Status Messages */}
+              {status === 'success' && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-green-400 text-sm mt-2"
                 >
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary-600 text-white mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="20 6 9 17 4 12" />
-                    </svg>
-                  </div>
-                  <h4 className="text-xl font-bold text-white">Thank You!</h4>
-                  <p className="text-gray-300">Your demo request has been received. Our team will contact you within 24 hours to schedule your personalized demo.</p>
+                  Message sent successfully! We'll be in touch soon.
                 </motion.div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">Full Name</label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      required
-                      value={formState.name}
-                      onChange={handleChange}
-                      className="w-full px-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">Work Email</label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      required
-                      value={formState.email}
-                      onChange={handleChange}
-                      className="w-full px-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="company" className="block text-sm font-medium text-gray-300 mb-1">Company</label>
-                    <input
-                      type="text"
-                      id="company"
-                      name="company"
-                      required
-                      value={formState.company}
-                      onChange={handleChange}
-                      className="w-full px-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-1">Interested In</label>
-                    <div className="grid grid-cols-2 gap-2">
-                      {['AI Agents', 'Assistants', 'Search', 'Analytics', 'Integration', 'Custom Solution'].map((option) => (
-                        <div key={option} className="flex items-center">
-                          <input
-                            type="checkbox"
-                            id={option.replace(/\s+/g, '')}
-                            name="interested"
-                            value={option}
-                            checked={formState.interested.includes(option)}
-                            onChange={handleCheckboxChange}
-                            className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-500 rounded"
-                          />
-                          <label htmlFor={option.replace(/\s+/g, '')} className="ml-2 text-sm text-gray-300">
-                            {option}
-                          </label>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1">Message (Optional)</label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows={4}
-                      value={formState.message}
-                      onChange={handleChange}
-                      className="w-full px-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                      placeholder="Tell us about your specific challenges or requirements..."
-                    />
-                  </div>
-                  
-                  <div className="pt-2">
-                    <button
-                      type="submit"
-                      disabled={formStatus === 'submitting'}
-                      className="w-full btn-primary flex items-center justify-center"
-                    >
-                      {formStatus === 'submitting' ? (
-                        <>
-                          <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                          </svg>
-                          Submitting...
-                        </>
-                      ) : (
-                        'Request Demo'
-                      )}
-                    </button>
-                  </div>
-                  
-                  <p className="text-xs text-gray-400 text-center mt-4">
-                    By submitting this form, you agree to our <a href="#" className="text-primary-400 hover:text-primary-300">Privacy Policy</a> and <a href="#" className="text-primary-400 hover:text-primary-300">Terms of Service</a>.
-                  </p>
-                </form>
               )}
+
+              {status === 'error' && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-red-400 text-sm mt-2"
+                >
+                  {errorMessage}
+                </motion.div>
+              )}
+            </form>
+
+            <div className="mt-8 pt-6 border-t border-blue-500/10">
+              <p className="text-gray-400 text-sm font-mono">
+                <span className="text-blue-400">$</span> connect --domain your-expertise --mode discover
+              </p>
             </div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
