@@ -16,20 +16,20 @@ const HeroSection = () => {
 
   // High-level conceptual words
   const words = [
-    "10-100x More Efficient",
-    "Domain Intelligence",
     "Atomic Thought Process",
-    "Enterprise Ready",
-    "Limitless Potential"
+    "Neural Programmability",
+    "Cognitive Architecture",
+    "Intelligent Synthesis",
+    "Quantum Efficiency"
   ];
 
   const terminalSequence: TerminalLine[] = [
     { type: 'input', content: 'nanominds init --mode atomic', delay: 0 },
     { type: 'info', content: 'Initializing atomic thought process...', delay: 1000 },
     { type: 'info', content: 'Deconstructing intelligence patterns...', delay: 1500 },
-    { type: 'success', content: '✓ Core efficiency optimized [10-100x]', delay: 2000 },
-    { type: 'success', content: '✓ Domain context established [0.2ms]', delay: 2300 },
-    { type: 'success', content: '✓ Enterprise protocols activated [0.1ms]', delay: 2600 },
+    { type: 'success', content: '✓ Core efficiency breakthrough achieved', delay: 2000 },
+    { type: 'success', content: '✓ Domain context established', delay: 2300 },
+    { type: 'success', content: '✓ Enterprise protocols activated', delay: 2600 },
     { type: 'info', content: 'Orchestrating cognitive elements...', delay: 3000 },
     { type: 'success', content: '✓ Neural architecture optimized', delay: 3500 },
     { type: 'input', content: 'orchestrator.connect --mode enterprise', delay: 4000 },
@@ -37,7 +37,7 @@ const HeroSection = () => {
     { type: 'success', content: '✓ Deployment matrix ready', delay: 5000 },
     { type: 'input', content: 'orchestrator.execute --task "domain_synthesis"', delay: 5500 },
     { type: 'info', content: 'Processing through atomic mesh...', delay: 6000 },
-    { type: 'success', content: '✓ System ready - Resource usage: 5%', delay: 6500 }
+    { type: 'success', content: '✓ System ready - Optimal efficiency achieved', delay: 6500 }
   ];
 
   useEffect(() => {
@@ -117,15 +117,15 @@ const HeroSection = () => {
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">nanominds</span>
                 </h1>
                 <h2 className="text-2xl md:text-3xl xl:text-5xl font-light mt-2 leading-tight text-gray-300">
-                  Artificial Intelligence. Revolutionized.
-              </h2>
+                  Artificial Programmable Intelligence. Revolutionized.
+                </h2>
                 <div className="h-16 mt-6">
                   <TextGenerationEffect words={words} className="text-gray-400 font-mono text-base xl:text-lg" />
-              </div>
+                </div>
             </div>
 
               <p className="text-gray-300 text-lg xl:text-xl leading-relaxed font-light">
-                Nanominds creates hyper-efficient AI by deconstructing intelligence into its most fundamental components—the atomic units of thought. Our breakthrough approach delivers exceptional performance with dramatically less compute.
+                In Pursuit of Atomic Thought Process - Nanominds deconstructs intelligence into fundamental cognitive elements, creating a new paradigm of programmable AI that's more efficient, adaptable, and precise.
             </p>
 
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">

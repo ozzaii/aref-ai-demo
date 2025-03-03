@@ -132,9 +132,9 @@ def create_efficient_model(domain="medical_imaging", task="anomaly_detection", d
         # Create architecture that can scale from data center to edge
         model_architecture = ArchitectDesigner.create_scalable(
             atomic_units=atomic_thought_units,
-            scaling_range={"min_complexity": 0.05, "max_complexity": 1.0},
-            intelligence_threshold=0.97,  # 97% of full model capability
-            efficiency_priority=0.8  # High priority on efficiency
+            scaling_range={"min_complexity": "minimal", "max_complexity": "full"},
+            intelligence_threshold="high",  # Maintain exceptional capability
+            efficiency_priority="maximum"  # Prioritize breakthrough efficiency
         )
         
     # 3. Compose atomic thought units into efficient cognitive structures
@@ -149,14 +149,14 @@ def create_efficient_model(domain="medical_imaging", task="anomaly_detection", d
     optimized_model = SynapticPruner.optimize(
         model=efficient_model,
         quantization=AdaptiveQuantizer(precision="dynamic"),
-        compute_reduction=0.90,  # Up to 90% compute reduction
+        compute_reduction="breakthrough",  # Achieve exceptional efficiency
         deployment_profile={
-            "datacenter": {"performance": 0.9, "efficiency": 0.7},
-            "edge": {"performance": 0.7, "efficiency": 0.95}
+            "datacenter": {"performance": "high", "efficiency": "balanced"},
+            "edge": {"performance": "balanced", "efficiency": "maximum"}
         }
     )
     
-    return optimized_model  # An enterprise-ready, domain-specific AI that's 10-100x more efficient`;
+    return optimized_model  # An enterprise-ready, domain-specific AI with breakthrough efficiency`;
 
   return (
     <StaticContainer className="relative bg-gradient-to-b from-dark/95 to-black/95 py-32 xl:py-40" id="architecture">
@@ -191,11 +191,11 @@ def create_efficient_model(domain="medical_imaging", task="anomaly_detection", d
                 <div className="text-blue-400 opacity-0 animate-fade-in-delay-4">{'>>'} Applying synaptic pruning...</div>
                 <div className="text-green-400 opacity-0 animate-fade-in-delay-5">{'>>'} Model optimization complete!</div>
                 <div className="text-emerald-400 mt-2 opacity-0 animate-fade-in-delay-6">
-                  Result: Optimized model created successfully
+                  Result: Model optimization successful
                   <br />
-                  Efficiency: 95.7% reduction in compute
+                  Efficiency: Breakthrough reduction in compute achieved
                   <br />
-                  Performance: 98.2% of baseline accuracy
+                  Performance: Exceptional accuracy maintained
                 </div>
               </div>
             </div>
@@ -271,10 +271,10 @@ def create_efficient_model(domain="medical_imaging", task="anomaly_detection", d
 
         <StaticContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-10">
           {[
-            { value: "10-100x", label: "More Efficient", sublabel: "than traditional models" },
-            { value: "0.2ms", label: "Response Time", sublabel: "average latency" },
-            { value: "99.8%", label: "Accuracy", sublabel: "in specialized tasks" },
-            { value: "5%", label: "Resource Usage", sublabel: "compared to large models" }
+            { value: "Breakthrough", label: "Efficiency", sublabel: "Redefining what's possible" },
+            { value: "Lightning", label: "Response", sublabel: "Think at the speed of light" },
+            { value: "Unmatched", label: "Accuracy", sublabel: "Precision in every task" },
+            { value: "Minimal", label: "Footprint", sublabel: "Maximum impact, minimal resources" }
           ].map((stat, i) => (
             <StaticContainer
               key={i}

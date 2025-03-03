@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import Image from 'next/image';
+import Logo from './Logo';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -32,25 +32,8 @@ const Navbar = () => {
         <div className="container-custom">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <Link href="/" className="flex items-center space-x-3">
-              <div className="relative w-8 h-8">
-                <Image
-                  src="/assets/hummingbird_icon.svg"
-                  alt="nanominds hummingbird"
-                  width={32}
-                  height={32}
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              <div className="relative h-6 w-32">
-                <Image
-                  src="/assets/nanominds_logo.svg"
-                  alt="nanominds"
-                  width={128}
-                  height={24}
-                  className="w-full h-full object-contain"
-                />
-              </div>
+            <Link href="/" className="flex items-center">
+              <Logo />
             </Link>
 
             {/* Desktop Navigation */}

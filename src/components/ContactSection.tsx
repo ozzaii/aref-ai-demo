@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
-const ContactSection = () => {
+export default function ContactSection() {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus('loading');
+    setStatus('sending');
     setErrorMessage('');
 
     try {
@@ -31,10 +31,10 @@ const ContactSection = () => {
       setEmail('');
       setMessage('');
 
-      // Reset success status after 3 seconds
+      // Reset success status after 5 seconds
       setTimeout(() => {
         setStatus('idle');
-      }, 3000);
+      }, 5000);
     } catch (error) {
       setStatus('error');
       setErrorMessage(error instanceof Error ? error.message : 'Failed to send message');
@@ -42,99 +42,108 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-20 relative overflow-hidden">
-      {/* Subtle background effects */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-dark/98 via-dark to-dark/95"></div>
-        <div className="absolute top-[20%] left-[10%] w-[30%] h-[30%] bg-blue-500/5 rounded-full filter blur-3xl opacity-20"></div>
-        <div className="absolute bottom-[10%] right-[20%] w-[25%] h-[25%] bg-blue-400/5 rounded-full filter blur-3xl opacity-20"></div>
-      </div>
-
-      <div className="container-custom relative z-10">
+    <section id="contact" className="py-16 bg-gradient-to-b from-gray-900 to-black">
+      <div className="container mx-auto px-4 max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true, margin: '-100px' }}
-          className="max-w-2xl mx-auto text-center"
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
-              Connect with nanominds
-            </span>
-          </h2>
-          
-          <p className="text-lg text-gray-300 font-light mb-12">
-            Discover how our orchestrated tiny models can transform your domain expertise 
-            into powerful intelligent systems.
+          <h2 className="text-4xl font-bold text-white mb-4">Get in Touch</h2>
+          <p className="text-gray-400 text-lg">
+            Ready to transform your business with AI? Let's start a conversation.
           </p>
-
-          <div className="bg-black/40 backdrop-blur-sm rounded-xl border border-blue-500/10 p-8 shadow-2xl">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <input
-                  type="email"
-                  placeholder="Your email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="w-full bg-dark/60 border border-blue-500/10 rounded-lg px-4 py-3 text-gray-300 placeholder-gray-500 focus:outline-none focus:border-blue-400/30 transition-colors"
-                />
-              </div>
-              
-              <div>
-                <textarea
-                  placeholder="Tell us about your domain"
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  required
-                  rows={3}
-                  className="w-full bg-dark/60 border border-blue-500/10 rounded-lg px-4 py-3 text-gray-300 placeholder-gray-500 focus:outline-none focus:border-blue-400/30 transition-colors resize-none"
-                ></textarea>
-              </div>
-
-              <button
-                type="submit"
-                disabled={status === 'loading'}
-                className={`w-full btn-primary py-3 rounded-lg font-medium transition-all duration-200 ${
-                  status === 'loading' ? 'opacity-70 cursor-not-allowed' : ''
-                }`}
-              >
-                {status === 'loading' ? 'Sending...' : 'Initiate Connection'}
-              </button>
-
-              {/* Status Messages */}
-              {status === 'success' && (
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-green-400 text-sm mt-2"
-                >
-                  Message sent successfully! We'll be in touch soon.
-                </motion.div>
-              )}
-
-              {status === 'error' && (
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-red-400 text-sm mt-2"
-                >
-                  {errorMessage}
-                </motion.div>
-              )}
-            </form>
-
-            <div className="mt-8 pt-6 border-t border-blue-500/10">
-              <p className="text-gray-400 text-sm font-mono">
-                <span className="text-blue-400">$</span> connect --domain your-expertise --mode discover
-              </p>
-            </div>
-          </div>
         </motion.div>
+
+        <motion.form
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          onSubmit={handleSubmit}
+          className="space-y-6 max-w-2xl mx-auto"
+        >
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-2">
+              Email Address
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+              placeholder="your@email.com"
+              disabled={status === 'sending'}
+            />
+          </div>
+
+          <div>
+            <label htmlFor="message" className="block text-sm font-medium text-gray-400 mb-2">
+              Message
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              required
+              rows={6}
+              className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+              placeholder="Tell us about your project or ask us anything..."
+              disabled={status === 'sending'}
+            />
+          </div>
+
+          <div className="flex flex-col items-center space-y-4">
+            <button
+              type="submit"
+              disabled={status === 'sending'}
+              className={`w-full md:w-auto px-8 py-3 rounded-lg font-medium text-white transition duration-200 ${
+                status === 'sending'
+                  ? 'bg-gray-600 cursor-not-allowed'
+                  : 'bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900'
+              }`}
+            >
+              {status === 'sending' ? (
+                <span className="flex items-center justify-center">
+                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Sending...
+                </span>
+              ) : (
+                'Send Message'
+              )}
+            </button>
+
+            {status === 'success' && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-green-400 text-sm font-medium"
+              >
+                Message sent successfully! We'll get back to you soon.
+              </motion.div>
+            )}
+
+            {status === 'error' && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-red-400 text-sm font-medium"
+              >
+                {errorMessage}
+              </motion.div>
+            )}
+          </div>
+        </motion.form>
       </div>
     </section>
   );
-};
-
-export default ContactSection; 
+} 
