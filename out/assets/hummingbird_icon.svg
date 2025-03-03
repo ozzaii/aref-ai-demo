@@ -1,0 +1,50 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <!-- Definitions for gradients and filters -->
+  <defs>
+    <!-- Rich gradient for the bird -->
+    <radialGradient id="birdGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#64FFDA" />
+      <stop offset="70%" stop-color="#7C4DFF" />
+      <stop offset="100%" stop-color="#651FFF" />
+    </radialGradient>
+    
+    <!-- Enhanced glow filter -->
+    <filter id="elegantGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="1.5" result="blur" />
+      <feFlood flood-color="#64FFDA" flood-opacity="0.6" />
+      <feComposite in2="blur" operator="in" />
+      <feComposite in="SourceGraphic" />
+    </filter>
+    
+    <!-- Background pattern -->
+    <pattern id="bgPattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="5" cy="5" r="0.5" fill="#64FFDA" opacity="0.2" />
+      <circle cx="15" cy="15" r="0.5" fill="#7C4DFF" opacity="0.2" />
+    </pattern>
+  </defs>
+  
+  <!-- Background box with rounded corners -->
+  <rect x="10" y="10" width="100" height="100" rx="15" fill="white" stroke="#E6E8FB" stroke-width="1.5" />
+  <rect x="10" y="10" width="100" height="100" rx="15" fill="url(#bgPattern)" />
+  
+  <!-- Hummingbird icon -->
+  <g transform="translate(30, 40) scale(1.2)">
+    <!-- Bird body -->
+    <path d="M25,15 C35,12 40,15 38,20 C36,25 30,28 20,30 C15,32 10,30 8,25 C6,20 10,16 16,15 C20,14 22,15 25,15 Z" 
+          fill="url(#birdGradient)" filter="url(#elegantGlow)" />
+    
+    <!-- Bird head -->
+    <circle cx="37" cy="20" r="5" fill="#7C4DFF" />
+    
+    <!-- Bird beak -->
+    <path d="M42,20 L50,19 L42,21 Z" fill="#64FFDA" />
+    
+    <!-- Wing detail -->
+    <path d="M15,20 C20,18 24,17 28,16 C25,17 22,19 20,22 C18,24 15,23 15,20 Z" 
+          fill="#5E35B1" opacity="0.8" />
+    
+    <!-- Tail feathers -->
+    <path d="M8,25 C5,26 4,24 5,22 C6,20 8,19 10,18" 
+          fill="none" stroke="#64FFDA" stroke-width="1.5" />
+  </g>
+</svg> 
