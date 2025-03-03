@@ -7,7 +7,7 @@ const nextConfig = {
     unoptimized: true,
   },
   basePath: '',
-  assetPrefix: '/',
+  assetPrefix: '',
   trailingSlash: true,
   
   env: {

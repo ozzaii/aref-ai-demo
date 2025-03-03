@@ -24,10 +24,15 @@ jobs:
           cache: 'npm'
           
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --legacy-peer-deps
         
       - name: Build website
         run: npm run build
+        
+      - name: Copy CNAME and nojekyll
+        run: |
+          touch out/.nojekyll
+          cp CNAME out/
         
       - name: Setup Pages
         uses: actions/configure-pages@v4

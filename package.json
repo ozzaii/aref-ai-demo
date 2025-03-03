@@ -2,16 +2,15 @@
   "name": "nanominds-website",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://ozzaii.github.io/aref-ai-demo",
-  "description": "Enterprise AI Consulting Landing Page",
+  "homepage": "https://nanominds.ai",
+  "description": "nanominds Enterprise AI Platform",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "predeploy": "npm run build",
-    "deploy": "touch out/.nojekyll && gh-pages -d out -t true",
-    "export": "next build"
+    "predeploy": "npm run build && touch out/.nojekyll && cp CNAME out/",
+    "deploy": "gh-pages -d out -t true"
   },
   "keywords": [
     "ai",
@@ -22,12 +21,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@react-spring/three": "~9.7.5",
-    "@react-three/drei": "^9.0.4",
-    "@react-three/fiber": "^9.0.4",
+    "@react-spring/three": "9.6.1",
+    "@react-three/drei": "9.56.28",
+    "@react-three/fiber": "8.11.5",
     "@types/node": "20.11.19",
     "@types/react": "18.2.57",
     "@types/react-dom": "18.2.19",
+    "@types/nodemailer": "^6.4.14",
     "autoprefixer": "10.4.17",
     "eslint": "8.56.0",
     "eslint-config-next": "14.1.0",
@@ -35,17 +35,21 @@
     "gsap": "^3.12.5",
     "next": "14.1.0",
     "nodemailer": "^6.9.10",
-    "@types/nodemailer": "^6.4.14",
     "postcss": "8.4.35",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sass": "^1.71.1",
-    "three": "^0.161.0",
+    "three": "0.149.0",
     "typescript": "5.3.3"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.0.8",
     "gh-pages": "^6.1.1",
     "tailwindcss": "3.4.1"
+  },
+  "overrides": {
+    "@react-three/fiber": {
+      "react": "^18.2.0",
+      "react-dom": "^18.2.0"
+    }
   }
 }
