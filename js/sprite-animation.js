@@ -153,6 +153,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Flight path animation setup with precise timing for node interactions
     function startFlightAnimation() {
+        console.log("Starting flight animation");
+        
         // Return to normal wing flapping speed for flight
         clearInterval(animationInterval);
         currentSpeed = frameDuration;
@@ -215,7 +217,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             
             .flying-hummingbird {
-                animation: flyBetweenNodes ${totalDuration}s 1 ease-in-out !important;
+                animation-name: flyBetweenNodes !important;
+                animation-duration: ${totalDuration}s !important;
+                animation-timing-function: ease-in-out !important;
+                animation-iteration-count: 1 !important;
+                animation-fill-mode: forwards !important;
             }
         `;
         document.head.appendChild(flyingStyle);
@@ -228,9 +234,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (node.nodeIndex >= 0) {
                 // Calculate when to trigger the node visit effect
                 const visitTime = (animationTimings[index] / 100) * totalDuration * 1000;
+                console.log(`Scheduling visit to node ${node.nodeIndex} at ${visitTime}ms`);
                 
                 // Schedule the visit
                 setTimeout(() => {
+                    console.log(`Visiting node ${node.nodeIndex}`);
                     visitNode(node.nodeIndex);
                     
                     // Speed up wing flapping during node visits
