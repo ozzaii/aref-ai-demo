@@ -172,6 +172,8 @@
             z-index: 5;
             filter: drop-shadow(0 0 2px rgba(99, 102, 241, 0.5));
             animation: float 3s infinite alternate ease-in-out;
+            transition: left 0.3s ease-out, top 0.3s ease-out;
+            will-change: transform, left, top;
         }
         
         @keyframes float {
@@ -917,6 +919,12 @@
                 <div class="neural-logo">
                     <!-- Hummingbird inside the neural logo box on the left -->
                     <img src="assets/hummingbird_icon.svg" class="logo-hummingbird" alt="Hummingbird">
+                    <!-- Neural nodes that the hummingbird will visit -->
+                    <div class="neural-node node-1"></div>
+                    <div class="neural-node node-2"></div>
+                    <div class="neural-node node-3"></div>
+                    <div class="neural-node node-4"></div>
+                    <!-- Original neural connections -->
                     <div class="neural-connection connection-1"></div>
                     <div class="neural-connection connection-2"></div>
                     <div class="neural-connection connection-3"></div>
@@ -1151,6 +1159,48 @@
             -webkit-text-fill-color: transparent;
         }
         
+        /* Neural nodes that the hummingbird will visit */
+        .neural-node {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            filter: drop-shadow(0 0 3px var(--accent-color));
+            z-index: 4;
+            opacity: 0.8;
+            animation: nodeGlow 3s infinite alternate ease-in-out;
+        }
+        
+        .node-1 {
+            top: 20%;
+            left: 60px;
+            animation-delay: 0s;
+        }
+        
+        .node-2 {
+            top: 70%;
+            left: 85px;
+            animation-delay: 0.75s;
+        }
+        
+        .node-3 {
+            top: 40%;
+            left: 110px;
+            animation-delay: 1.5s;
+        }
+        
+        .node-4 {
+            top: 30%;
+            left: 140px;
+            animation-delay: 2.25s;
+        }
+        
+        @keyframes nodeGlow {
+            0% { transform: scale(1); filter: drop-shadow(0 0 1px var(--accent-color)); }
+            100% { transform: scale(1.2); filter: drop-shadow(0 0 4px var(--accent-color)); }
+        }
+        
         /* Neural connection animation */
         .neural-connection {
             position: absolute;
@@ -1359,6 +1409,12 @@
                 });
             });
         });
+    </script>
+    
+    <!-- Hummingbird Animation Script -->
+    <script src="js/hummingbird-animation.js"></script>
+    
+    <script>
     </script>
 </body>
 </html>
