@@ -165,10 +165,10 @@
         .hummingbird-container {
             width: 40px;
             height: 40px;
-            position: absolute;
-            top: 10px;
-            left: 20px;
-            z-index: 5;
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            margin-right: 10px;
         }
         
         .hummingbird-icon {
@@ -948,27 +948,26 @@
 <body>
     <header>
         <div class="logo-container">
+            <div class="hummingbird-container">
+                <svg class="hummingbird-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Body -->
+                    <path d="M7,12 C8,10 10,9 12,11 C14,13 16,12 16,10 C16,8 14,6 12,7 C10,8 8,9 7,12 Z" />
+                    
+                    <!-- Head -->
+                    <path d="M16,10 C16.5,9 17,9 17.5,9.5 C18,10 18,10.5 17,11 C16,11.5 16,10.5 16,10 Z" />
+                    
+                    <!-- Beak -->
+                    <path class="beak" d="M17.5,9.5 L20,9 L17.5,10 Z" />
+                    
+                    <!-- Wing -->
+                    <path class="wing" d="M12,11 C10,9 6,10 7,12 C8,14 10,13 12,11 Z" />
+                    
+                    <!-- Tail -->
+                    <path class="tail" d="M7,12 C6,13 4,15 5,16 C6,17 7,15 7,12 Z" />
+                </svg>
+            </div>
             <div class="custom-logo">
                 <div class="neural-logo">
-                    <!-- Hummingbird inside the neural logo -->
-                    <div class="hummingbird-container">
-                        <svg class="hummingbird-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Body -->
-                            <path d="M7,12 C8,10 10,9 12,11 C14,13 16,12 16,10 C16,8 14,6 12,7 C10,8 8,9 7,12 Z" />
-                            
-                            <!-- Head -->
-                            <path d="M16,10 C16.5,9 17,9 17.5,9.5 C18,10 18,10.5 17,11 C16,11.5 16,10.5 16,10 Z" />
-                            
-                            <!-- Beak -->
-                            <path class="beak" d="M17.5,9.5 L20,9 L17.5,10 Z" />
-                            
-                            <!-- Wing -->
-                            <path class="wing" d="M12,11 C10,9 6,10 7,12 C8,14 10,13 12,11 Z" />
-                            
-                            <!-- Tail -->
-                            <path class="tail" d="M7,12 C6,13 4,15 5,16 C6,17 7,15 7,12 Z" />
-                        </svg>
-                    </div>
                     <div class="neural-connection connection-1"></div>
                     <div class="neural-connection connection-2"></div>
                     <div class="neural-connection connection-3"></div>
@@ -1355,28 +1354,27 @@
     <footer>
         <div style="text-align: center; padding: 40px 20px;">
             <div style="margin-bottom: 20px;">
-                <div style="position: relative; display: inline-block;">
+                <div style="display: flex; align-items: center; justify-content: center;">
+                    <div class="hummingbird-container" style="transform: scale(0.8); margin-right: 5px;">
+                        <svg class="hummingbird-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Body -->
+                            <path d="M7,12 C8,10 10,9 12,11 C14,13 16,12 16,10 C16,8 14,6 12,7 C10,8 8,9 7,12 Z" />
+                            
+                            <!-- Head -->
+                            <path d="M16,10 C16.5,9 17,9 17.5,9.5 C18,10 18,10.5 17,11 C16,11.5 16,10.5 16,10 Z" />
+                            
+                            <!-- Beak -->
+                            <path class="beak" d="M17.5,9.5 L20,9 L17.5,10 Z" />
+                            
+                            <!-- Wing -->
+                            <path class="wing" d="M12,11 C10,9 6,10 7,12 C8,14 10,13 12,11 Z" />
+                            
+                            <!-- Tail -->
+                            <path class="tail" d="M7,12 C6,13 4,15 5,16 C6,17 7,15 7,12 Z" />
+                        </svg>
+                    </div>
                     <div class="custom-logo" style="transform: scale(0.8);">
                         <div class="neural-logo">
-                            <!-- Hummingbird inside the neural logo -->
-                            <div class="hummingbird-container" style="top: 5px; left: 15px; transform: scale(0.8);">
-                                <svg class="hummingbird-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <!-- Body -->
-                                    <path d="M7,12 C8,10 10,9 12,11 C14,13 16,12 16,10 C16,8 14,6 12,7 C10,8 8,9 7,12 Z" />
-                                    
-                                    <!-- Head -->
-                                    <path d="M16,10 C16.5,9 17,9 17.5,9.5 C18,10 18,10.5 17,11 C16,11.5 16,10.5 16,10 Z" />
-                                    
-                                    <!-- Beak -->
-                                    <path class="beak" d="M17.5,9.5 L20,9 L17.5,10 Z" />
-                                    
-                                    <!-- Wing -->
-                                    <path class="wing" d="M12,11 C10,9 6,10 7,12 C8,14 10,13 12,11 Z" />
-                                    
-                                    <!-- Tail -->
-                                    <path class="tail" d="M7,12 C6,13 4,15 5,16 C6,17 7,15 7,12 Z" />
-                                </svg>
-                            </div>
                             <div class="neural-connection connection-1"></div>
                             <div class="neural-connection connection-2"></div>
                             <div class="neural-connection connection-3"></div>
