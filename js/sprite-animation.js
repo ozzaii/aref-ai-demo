@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Position the hummingbird initially at the leftmost starting position (static)
     spriteContainer.style.position = 'absolute';
     spriteContainer.style.left = '20px';
-    spriteContainer.style.top = '50%';
+    spriteContainer.style.top = '40%';  // Higher initial position
     spriteContainer.style.transform = 'translateY(-50%)';
     
     // Set slower wing flapping in static position
@@ -162,12 +162,12 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Define the node positions to fly to (relative to the logo container)
         const nodes = [
-            { x: 20, y: '50%', nodeIndex: -1 },     // Starting position (left side)
-            { x: 60, y: '20%', nodeIndex: 0 },      // Node 1 (Top)
-            { x: 85, y: '70%', nodeIndex: 1 },      // Node 2 (Bottom)
-            { x: 110, y: '40%', nodeIndex: 2 },     // Node 3 (Middle)
-            { x: 140, y: '30%', nodeIndex: 3 },     // Node 4 (Right)
-            { x: 20, y: '50%', nodeIndex: -1 }      // Back to starting position
+            { x: 20, y: '40%', nodeIndex: -1 },     // Starting position (left side) - higher
+            { x: 60, y: '15%', nodeIndex: 0 },      // Node 1 (Top) - higher
+            { x: 85, y: '60%', nodeIndex: 1 },      // Node 2 (Bottom) - higher
+            { x: 110, y: '30%', nodeIndex: 2 },     // Node 3 (Middle) - higher
+            { x: 140, y: '25%', nodeIndex: 3 },     // Node 4 (Right) - higher
+            { x: 20, y: '40%', nodeIndex: -1 }      // Back to starting position - higher
         ];
         
         // Create the keyframes for the flight path with varying speeds
@@ -264,7 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Return to leftmost position
             spriteContainer.style.left = '20px';
-            spriteContainer.style.top = '50%';
+            spriteContainer.style.top = '40%';  // Higher resting position
             spriteContainer.style.transform = 'translateY(-50%)';
             
             // Slow down wing flapping when back to resting position
