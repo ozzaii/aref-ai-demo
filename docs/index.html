@@ -164,18 +164,19 @@
         
         .logo-hummingbird {
             position: absolute;
-            width: 35px;
-            height: 35px;
-            top: 12px;
-            left: 15px;
+            width: 30px;
+            height: 30px;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
             z-index: 5;
             filter: drop-shadow(0 0 2px rgba(99, 102, 241, 0.5));
             animation: float 3s infinite alternate ease-in-out;
         }
         
         @keyframes float {
-            from { transform: translateY(0) rotate(0); }
-            to { transform: translateY(-2px) rotate(2deg); }
+            from { transform: translateY(-50%) rotate(0); }
+            to { transform: translateY(calc(-50% - 2px)) rotate(2deg); }
         }
 
         h1 {
@@ -1130,7 +1131,7 @@
             content: "nanominds";
             position: absolute;
             top: 50%;
-            left: 50%;
+            left: 55%;
             transform: translate(-50%, -50%);
             font-family: 'Inter', sans-serif;
             font-weight: 800;
@@ -1141,6 +1142,7 @@
             background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            padding-left: 15px;
         }
         
         body.dark-mode .neural-logo::after {
@@ -1306,7 +1308,7 @@
                     <div class="custom-logo" style="transform: scale(0.8);">
                         <div class="neural-logo">
                             <!-- Hummingbird inside the neural logo box in footer -->
-                            <img src="assets/hummingbird_icon.svg" class="logo-hummingbird" style="width: 28px; height: 28px; top: 10px; left: 12px;" alt="Hummingbird">
+                            <img src="assets/hummingbird_icon.svg" class="logo-hummingbird" style="width: 24px; height: 24px; top: 50%; left: 15px; transform: translateY(-50%);" alt="Hummingbird">
                             <div class="neural-connection connection-1"></div>
                             <div class="neural-connection connection-2"></div>
                             <div class="neural-connection connection-3"></div>
