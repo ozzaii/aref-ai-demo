@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        @keyframes wingFlap {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(-25deg); }
+        }
+        
+        @keyframes secondaryWingFlap {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(-15deg); }
+        }
+        
+        #wing {
+            animation: wingFlap 0.05s infinite alternate linear;
+            transform-origin: 20px 16px;
+        }
+        
+        .secondaryWing {
+            animation: secondaryWingFlap 0.05s infinite alternate linear;
+            transform-origin: 18px 16px;
+        }
+    </style>
+
     <defs>
         <linearGradient id="bodyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stop-color="#6366F1" />
@@ -30,6 +52,10 @@
         <path d="M30,14.5 L34,14 L30,15 Z" 
               fill="#10B981" stroke="#10B981" stroke-width="0.5" />
         
+        <!-- Secondary Wing - smaller, behind primary -->
+        <path class="secondaryWing" d="M20,16 C17,14 15,15 16,17 C17,19 19,18 20,16 Z" 
+              fill="url(#wingGradient)" stroke="#8B5CF6" stroke-width="0.3" opacity="0.7" />
+        
         <!-- Primary Wing - will be animated -->
         <g id="wing" transform-origin="20px 16px">
             <path class="primaryWing" d="M22,16 C18,12 14,14 15,18 C16,22 20,19 22,16 Z" 
@@ -43,10 +69,6 @@
             <path class="wingDetail" d="M16,17 C18,18 20,18 22,17" 
                   fill="none" stroke="#4F46E5" stroke-width="0.4" />
         </g>
-        
-        <!-- Secondary Wing - smaller, behind primary -->
-        <path class="secondaryWing" d="M20,16 C17,14 15,15 16,17 C17,19 19,18 20,16 Z" 
-              fill="url(#wingGradient)" stroke="#8B5CF6" stroke-width="0.3" opacity="0.7" />
         
         <!-- Tail -->
         <path d="M15,18 C13,20 10,23 11,24 C12,25 14,22 15,18 Z" 
