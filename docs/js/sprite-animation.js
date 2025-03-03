@@ -104,8 +104,30 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     }
     
-    // Flight path animation setup with precise timing for node interactions
+    // Position the hummingbird initially at the leftmost starting position (static)
+    spriteContainer.style.position = 'absolute';
+    spriteContainer.style.left = '20px';
+    spriteContainer.style.top = '50%';
+    spriteContainer.style.transform = 'translateY(-50%)';
+    
+    // Only start the flight animation after a delay
     setTimeout(() => {
+        // Start with slightly slower wing flapping in static position
+        clearInterval(animationInterval);
+        currentSpeed = frameDuration * 1.5; // Slower at rest
+        animationInterval = setInterval(animateSprite, currentSpeed);
+        
+        // Then after a delay, start the flight animation
+        setTimeout(startFlightAnimation, 3000);
+    }, 1000);
+    
+    // Flight path animation setup with precise timing for node interactions
+    function startFlightAnimation() {
+        // Return to normal wing flapping speed for flight
+        clearInterval(animationInterval);
+        currentSpeed = frameDuration;
+        animationInterval = setInterval(animateSprite, currentSpeed);
+        
         // Define the node positions to fly to (relative to the logo container)
         const nodes = [
             { x: 20, y: '50%', nodeIndex: -1 },     // Starting position (left side)
@@ -163,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             
             .flying-hummingbird {
-                animation: flyBetweenNodes ${totalDuration}s infinite ease-in-out !important;
+                animation: flyBetweenNodes ${totalDuration}s 1 ease-in-out !important;
             }
         `;
         document.head.appendChild(flyingStyle);
@@ -194,25 +216,26 @@ document.addEventListener('DOMContentLoaded', () => {
                     }, 1000);
                     
                 }, visitTime);
-                
-                // Also schedule for subsequent animation loops
-                setInterval(() => {
-                    visitNode(node.nodeIndex);
-                    
-                    // Speed up wing flapping during node visits
-                    clearInterval(animationInterval);
-                    currentSpeed = frameDuration * 0.6; // Faster during node visit
-                    const newInterval = setInterval(animateSprite, currentSpeed);
-                    
-                    // Return to normal speed after the visit
-                    setTimeout(() => {
-                        clearInterval(newInterval);
-                        currentSpeed = frameDuration;
-                        animationInterval = setInterval(animateSprite, currentSpeed);
-                    }, 1000);
-                    
-                }, totalDuration * 1000); // Repeat for each loop
             }
         });
-    }, 1000);
+        
+        // After completing one full cycle, return to static position
+        setTimeout(() => {
+            // Remove the flying animation
+            spriteContainer.classList.remove('flying-hummingbird');
+            
+            // Return to leftmost position
+            spriteContainer.style.left = '20px';
+            spriteContainer.style.top = '50%';
+            spriteContainer.style.transform = 'translateY(-50%)';
+            
+            // Slow down wing flapping when back to resting position
+            clearInterval(animationInterval);
+            currentSpeed = frameDuration * 1.5; // Slower at rest
+            animationInterval = setInterval(animateSprite, currentSpeed);
+            
+            // After a rest period, start another flight cycle
+            setTimeout(startFlightAnimation, 5000);
+        }, totalDuration * 1000);
+    }
 });
