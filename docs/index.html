@@ -171,14 +171,15 @@
             transform: translateY(-50%);
             z-index: 5;
             filter: drop-shadow(0 0 2px rgba(99, 102, 241, 0.5));
-            animation: float 3s infinite alternate ease-in-out;
-            transition: left 0.3s ease-out, top 0.3s ease-out;
             will-change: transform, left, top;
         }
         
-        @keyframes float {
-            from { transform: translateY(-50%) rotate(0); }
-            to { transform: translateY(calc(-50% - 2px)) rotate(2deg); }
+        .animated-hummingbird {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
         }
 
         h1 {

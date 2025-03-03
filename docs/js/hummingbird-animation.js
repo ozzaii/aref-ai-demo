@@ -1,11 +1,41 @@
-// Hummingbird Flight Animation
+// Realistic Hummingbird Flight Animation
 document.addEventListener('DOMContentLoaded', () => {
-    // Get the hummingbird element and its container
+    // Get the hummingbird element
     const hummingbird = document.querySelector('.logo-hummingbird');
     if (!hummingbird) return;
     
     const neuralLogo = document.querySelector('.neural-logo');
     if (!neuralLogo) return;
+    
+    // Load the SVG into the page to make it accessible for animation
+    fetch(hummingbird.src)
+        .then(response => response.text())
+        .then(svgContent => {
+            // Create a temporary div to hold the SVG content
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = svgContent;
+            const svgElement = tempDiv.querySelector('svg');
+            
+            // Add necessary animation classes
+            svgElement.classList.add('animated-hummingbird');
+            
+            // Replace the image with the inline SVG
+            hummingbird.parentNode.replaceChild(svgElement, hummingbird);
+            
+            // Now we can animate specific parts of the SVG
+            const wing = svgElement.querySelector('#wing');
+            if (wing) {
+                // Add rapid wing flapping animation
+                wing.style.animation = 'wingFlap 0.1s infinite alternate ease-in-out';
+                wing.style.transformOrigin = '20px 16px';
+            }
+            
+            // Start the flight path animation after a short delay
+            setTimeout(() => {
+                svgElement.classList.add('flying-hummingbird');
+            }, 2000);
+        })
+        .catch(error => console.error('Error loading SVG:', error));
     
     // Define the node positions to fly to (relative to the logo container)
     const nodes = [
@@ -38,18 +68,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         .flying-hummingbird {
-            animation: flyBetweenNodes 12s infinite ease-in-out, wingFlap 0.2s infinite alternate ease-in-out !important;
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            z-index: 5;
+            filter: drop-shadow(0 0 2px rgba(99, 102, 241, 0.5));
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            animation: flyBetweenNodes 15s infinite ease-in-out;
         }
         
         @keyframes wingFlap {
-            from { transform: translateY(-50%) scale(1); }
-            to { transform: translateY(-50%) scale(1.05) rotate(2deg); }
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(-20deg); }
+        }
+        
+        /* Make the animation speed up during flight between nodes */
+        .flying-hummingbird #wing {
+            animation-duration: 0.08s !important;
         }
     `;
     document.head.appendChild(style);
-    
-    // Start the animation after a delay
-    setTimeout(() => {
-        hummingbird.classList.add('flying-hummingbird');
-    }, 3000);
 });
