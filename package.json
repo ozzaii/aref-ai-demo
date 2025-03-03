@@ -1,5 +1,5 @@
 {
-  "name": "arefaidemo",
+  "name": "nanominds-website",
   "version": "1.0.0",
   "private": true,
   "homepage": "https://ozzaii.github.io/aref-ai-demo",
@@ -9,8 +9,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "predeploy": "npm run build && touch out/.nojekyll",
-    "deploy": "gh-pages -d out --dotfiles",
+    "predeploy": "npm run build",
+    "deploy": "touch out/.nojekyll && gh-pages -d out -t true",
     "export": "next build"
   },
   "keywords": [
@@ -22,27 +22,30 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@react-spring/three": "~9.7.5",
     "@react-three/drei": "^9.0.4",
     "@react-three/fiber": "^9.0.4",
-    "@types/node": "^20.11.20",
-    "@types/nodemailer": "^6.4.17",
-    "@types/react": "^18.2.57",
-    "@types/react-dom": "^18.2.19",
-    "framer-motion": "^11.0.6",
+    "@types/node": "20.11.19",
+    "@types/react": "18.2.57",
+    "@types/react-dom": "18.2.19",
+    "autoprefixer": "10.4.17",
+    "eslint": "8.56.0",
+    "eslint-config-next": "14.1.0",
+    "framer-motion": "^11.0.5",
     "gsap": "^3.12.5",
-    "next": "^14.1.0",
-    "nodemailer": "^6.10.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "next": "14.1.0",
+    "nodemailer": "^6.9.10",
+    "@types/nodemailer": "^6.4.14",
+    "postcss": "8.4.35",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "sass": "^1.71.1",
     "three": "^0.161.0",
-    "typescript": "^5.3.3"
+    "typescript": "5.3.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.0.8",
-    "autoprefixer": "^10.4.17",
-    "gh-pages": "^6.3.0",
-    "postcss": "^8.4.35",
-    "tailwindcss": "^3.4.1"
+    "gh-pages": "^6.1.1",
+    "tailwindcss": "3.4.1"
   }
 }

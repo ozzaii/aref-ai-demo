@@ -6,8 +6,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: process.env.NODE_ENV === 'production' ? '/aref-ai-demo' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/aref-ai-demo/' : '',
+  basePath: '',
+  assetPrefix: '/',
   trailingSlash: true,
   
   env: {
