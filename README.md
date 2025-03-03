@@ -1,6 +1,6 @@
-# Nanominds.ai - Artificial Programmable Intelligence with Tiny Models
+# Nanominds.ai - Artificial Programmable Intelligence with Efficient Models
 
-This repository contains a modern, responsive website for Nanominds.ai, a company specializing in creating lightweight, domain-specific AI models that deliver exceptional performance for targeted enterprise use cases. Our focus is on highly efficient, programmable intelligence that requires a fraction of the resources of traditional AI while maintaining comparable performance for specific tasks.
+This repository contains a modern, responsive website for Nanominds.ai, a company specializing in creating efficient, domain-specific AI models that deliver exceptional performance for targeted enterprise use cases. Our focus is on highly efficient, programmable intelligence that requires a fraction of the resources of traditional AI while maintaining comparable performance for specific tasks. Our models can be deployed flexibly across enterprise environments—from data centers to edge devices—based on your specific needs.
 
 ## Features
 
@@ -14,16 +14,17 @@ This repository contains a modern, responsive website for Nanominds.ai, a compan
 
 ## Focus Areas
 
-Nanominds.ai specializes in creating tiny, efficient, programmable AI models that are:
+Nanominds.ai specializes in creating efficient, programmable AI models with flexible deployment options:
 
 - **Domain & Task-Specific**: Built for particular industries and precisely defined use cases
-- **Lightweight & Efficient**: 10-100x smaller than generic large language models, using up to 95% less compute
+- **Highly Efficient**: 10-100x more efficient than generic large language models, using up to 90% less compute
+- **Flexible Deployment**: Deployable across the spectrum from enterprise data centers to edge devices
+- **Adaptive Architecture**: Models that scale dynamically based on available resources and performance needs
 - **Enterprise-Ready**: Designed for mission-critical business applications with enterprise-grade reliability
-- **Programmable**: Highly adaptable with flexible interfaces for integration with existing systems
-- **Privacy-First**: Run locally with no need to share sensitive data, ideal for regulated industries
-- **Customizable**: Easily adaptable to specific enterprise needs and requirements
-- **Edge-Ready**: Deployable on edge devices, IoT sensors, and legacy hardware
-- **Cost-Effective**: Dramatically lower computational, energy, and operational costs
+- **Programmable Interfaces**: Highly adaptable with integration points for existing enterprise systems
+- **Data Privacy Options**: Deploy where your data security and compliance needs dictate—cloud, on-premises, or edge
+- **Hybrid Solutions**: Seamlessly operate across your entire infrastructure with consistent performance
+- **Cost-Effective**: Dramatically lower computational, energy, and operational costs for any deployment scenario
 
 ## Technologies Used
 
