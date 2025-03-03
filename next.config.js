@@ -9,10 +9,6 @@ const nextConfig = {
   basePath: '',
   assetPrefix: '',
   trailingSlash: true,
-  
-  env: {
-    BASE_PATH: process.env.NODE_ENV === 'production' ? '/aref-ai-demo' : '',
-  },
 };
 
 module.exports = nextConfig; 

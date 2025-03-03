@@ -24,32 +24,37 @@
     "@react-spring/three": "9.6.1",
     "@react-three/drei": "9.56.28",
     "@react-three/fiber": "8.11.5",
-    "@types/node": "20.11.19",
-    "@types/react": "18.2.57",
-    "@types/react-dom": "18.2.19",
-    "@types/nodemailer": "^6.4.14",
+    "@types/node": "18.17.0",
+    "@types/react": "18.2.0",
+    "@types/react-dom": "18.2.0",
+    "@types/nodemailer": "6.4.14",
+    "@types/three": "0.149.0",
     "autoprefixer": "10.4.17",
     "eslint": "8.56.0",
-    "eslint-config-next": "14.1.0",
-    "framer-motion": "^11.0.5",
+    "eslint-config-next": "13.5.6",
+    "framer-motion": "10.16.4",
     "gsap": "^3.12.5",
-    "next": "14.1.0",
-    "nodemailer": "^6.9.10",
+    "next": "13.5.6",
+    "nodemailer": "6.9.10",
     "postcss": "8.4.35",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sass": "^1.71.1",
     "three": "0.149.0",
-    "typescript": "5.3.3"
+    "typescript": "5.0.4"
   },
   "devDependencies": {
-    "gh-pages": "^6.1.1",
+    "gh-pages": "6.1.1",
     "tailwindcss": "3.4.1"
   },
   "overrides": {
     "@react-three/fiber": {
-      "react": "^18.2.0",
-      "react-dom": "^18.2.0"
+      "react": "18.2.0",
+      "react-dom": "18.2.0"
     }
+  },
+  "resolutions": {
+    "@react-three/fiber": "8.11.5",
+    "three": "0.149.0"
   }
 }
