@@ -1,29 +1,33 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nanominds.ai - Enterprise AI with Tiny Models</title>
+    <title>Nanominds.ai - Artificial Programmable Intelligence</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #2D89EF;
-            --primary-dark: #0052CC;
-            --accent-color: #0A4EB2;
+            --primary-color: #6366F1;
+            --primary-dark: #4F46E5;
+            --accent-color: #8B5CF6;
+            --accent-secondary: #10B981;
             --background-light: #f8f9fa;
-            --background-dark: #1a1a1a;
+            --background-dark: #111827;
             --text-light: #333;
             --text-dark: #eee;
             --card-light: #ffffff;
-            --card-dark: #2a2a2a;
-            --shadow-light: 0 8px 30px rgba(0, 0, 0, 0.1);
-            --shadow-dark: 0 8px 30px rgba(0, 0, 0, 0.3);
+            --card-dark: #1E293B;
+            --shadow-light: 0 10px 40px rgba(99, 102, 241, 0.15);
+            --shadow-dark: 0 10px 40px rgba(99, 102, 241, 0.25);
             --transition: all 0.3s ease;
+            --code-bg-light: #f1f5f9;
+            --code-bg-dark: #0F172A;
+            --glow-light: 0 0 15px rgba(99, 102, 241, 0.5);
+            --glow-dark: 0 0 15px rgba(139, 92, 246, 0.5);
         }
 
         * {
@@ -49,7 +53,44 @@
         header {
             padding: 20px;
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 5px 0;
+            position: relative;
+        }
+
+        body.dark-mode nav a {
+            color: var(--text-dark);
+        }
+
+        nav a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        nav a:hover:after {
+            width: 100%;
         }
 
         .theme-toggle {
@@ -67,40 +108,45 @@
             color: var(--text-dark);
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
+        .hero {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: calc(100vh - 80px);
-        }
-
-        .logo-card {
-            background: var(--card-light);
-            border-radius: 16px;
-            box-shadow: var(--shadow-light);
-            padding: 40px;
-            width: 100%;
-            max-width: 700px;
+            padding: 100px 20px;
             text-align: center;
-            transition: var(--transition);
-            transform: translateY(20px);
-            opacity: 0;
-            animation: fadeIn 0.8s forwards;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(139, 92, 246, 0.08));
+            min-height: 85vh;
         }
 
-        body.dark-mode .logo-card {
-            background: var(--card-dark);
-            box-shadow: var(--shadow-dark);
+        body.dark-mode .hero {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(139, 92, 246, 0.12));
         }
 
-        @keyframes fadeIn {
-            to {
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.2) 0%, transparent 50%);
+            z-index: -1;
+            animation: pulseBg 15s infinite alternate ease-in-out;
+        }
+        
+        @keyframes pulseBg {
+            0% {
+                opacity: 0.7;
+                transform: scale(1);
+            }
+            100% {
                 opacity: 1;
-                transform: translateY(0);
+                transform: scale(1.1);
             }
         }
 
@@ -114,21 +160,48 @@
         }
 
         h1 {
-            font-weight: 700;
-            margin-bottom: 15px;
-            font-size: 2rem;
-            background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+            font-weight: 800;
+            margin-bottom: 20px;
+            font-size: 4rem;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+            max-width: 900px;
+            text-shadow: var(--glow-light);
+            animation: titlePulse 4s infinite alternate ease-in-out;
+            letter-spacing: -0.5px;
+        }
+
+        body.dark-mode h1 {
+            text-shadow: var(--glow-dark);
+        }
+
+        @keyframes titlePulse {
+            0% {
+                opacity: 0.9;
+            }
+            100% {
+                opacity: 1;
+                text-shadow: var(--glow-light);
+            }
+        }
+
+        .tagline {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: var(--accent-color);
+            text-shadow: 0 0 5px rgba(139, 92, 246, 0.3);
         }
 
         .description {
             color: #555;
             font-weight: 400;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             margin-bottom: 30px;
             transition: var(--transition);
-            max-width: 600px;
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -137,52 +210,360 @@
             color: #aaa;
         }
 
-        .features {
+        .cta-buttons {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            margin: 30px 0;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 16px 32px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .cta-button:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+            z-index: -1;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.5);
+        }
+        
+        .cta-button:hover:before {
+            opacity: 1;
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+            box-shadow: none;
+            overflow: hidden;
+        }
+        
+        .cta-button.secondary:before {
+            background: var(--accent-color);
+            opacity: 0;
+        }
+
+        body.dark-mode .cta-button.secondary {
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        .cta-button.secondary:hover {
+            color: white;
+            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3);
+        }
+        
+        .cta-button.secondary:hover:before {
+            opacity: 0.9;
+        }
+
+        .section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            display: inline-block;
+            text-shadow: var(--glow-light);
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        body.dark-mode .section-title {
+            text-shadow: var(--glow-dark);
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            margin: 20px auto 0;
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(99, 102, 241, 0.3);
+        }
+        
+        .section-title:before {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, transparent 100%);
+            top: -15px;
+            left: -15px;
+            border-radius: 50%;
+            opacity: 0.5;
+            filter: blur(10px);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
         }
 
         .feature {
-            background: rgba(45, 137, 239, 0.05);
-            border-radius: 12px;
-            padding: 20px;
-            width: 100%;
-            max-width: 200px;
-            text-align: left;
+            background: var(--card-light);
+            border-radius: 16px;
+            padding: 40px;
             transition: var(--transition);
-            border-left: 3px solid var(--primary-color);
+            box-shadow: var(--shadow-light);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            z-index: 1;
+            border: 1px solid rgba(99, 102, 241, 0.1);
         }
 
         body.dark-mode .feature {
-            background: rgba(45, 137, 239, 0.1);
+            background: var(--card-dark);
+            box-shadow: var(--shadow-dark);
+            border: 1px solid rgba(99, 102, 241, 0.15);
         }
 
         .feature:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-light), 0 10px 40px rgba(99, 102, 241, 0.2);
         }
 
         body.dark-mode .feature:hover {
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: var(--shadow-dark), 0 10px 40px rgba(99, 102, 241, 0.3);
+        }
+
+        .feature:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+            z-index: -1;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .feature:hover:after {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 25px;
+            color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.3));
         }
 
         .feature h3 {
+            color: var(--primary-dark);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        body.dark-mode .feature h3 {
             color: var(--primary-color);
-            font-size: 1rem;
-            margin-bottom: 10px;
-            font-weight: 600;
         }
 
         .feature p {
-            font-size: 0.9rem;
             color: #666;
+            font-size: 1.1rem;
+            flex-grow: 1;
+            line-height: 1.7;
         }
 
         body.dark-mode .feature p {
             color: #bbb;
+        }
+
+        .feature:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
+            z-index: 0;
+        }
+
+        .use-cases {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .use-case {
+            background: var(--card-light);
+            border-radius: 12px;
+            padding: 30px;
+            transition: var(--transition);
+            box-shadow: var(--shadow-light);
+            border-top: 4px solid var(--accent-secondary);
+        }
+
+        body.dark-mode .use-case {
+            background: var(--card-dark);
+            box-shadow: var(--shadow-dark);
+        }
+
+        .use-case:hover {
+            transform: translateY(-5px);
+        }
+
+        .use-case h3 {
+            color: var(--accent-secondary);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .use-case p {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        body.dark-mode .use-case p {
+            color: #bbb;
+        }
+
+        .tech-stack {
+            background: var(--code-bg-light);
+            padding: 100px 20px;
+            transition: var(--transition);
+        }
+
+        body.dark-mode .tech-stack {
+            background: var(--code-bg-dark);
+        }
+
+        .stack-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .code-example {
+            background: var(--card-light);
+            border-radius: 20px;
+            padding: 50px 30px 30px;
+            box-shadow: var(--shadow-light);
+            margin-top: 40px;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 1rem;
+            line-height: 1.6;
+            overflow-x: auto;
+            position: relative;
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            background-image: 
+                radial-gradient(circle at 15% 85%, rgba(99, 102, 241, 0.05) 0%, transparent 30%),
+                radial-gradient(circle at 85% 15%, rgba(139, 92, 246, 0.05) 0%, transparent 30%);
+        }
+
+        body.dark-mode .code-example {
+            background: var(--card-dark);
+            box-shadow: var(--shadow-dark);
+            border: 1px solid rgba(99, 102, 241, 0.15);
+            background-image: 
+                radial-gradient(circle at 15% 85%, rgba(99, 102, 241, 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 85% 15%, rgba(139, 92, 246, 0.1) 0%, transparent 30%);
+        }
+
+        .code-example:before {
+            content: "• • •";
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            color: #888;
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        .code-title {
+            position: absolute;
+            top: 0;
+            right: 20px;
+            background: var(--accent-color);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 0 0 10px 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 3px 10px rgba(139, 92, 246, 0.3);
+        }
+
+        .code-line {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .comment {
+            color: #888;
+        }
+
+        .keyword {
+            color: var(--primary-color);
+        }
+
+        body.dark-mode .keyword {
+            color: #6366F1;
+        }
+
+        .string {
+            color: var(--accent-secondary);
+        }
+
+        body.dark-mode .string {
+            color: #10B981;
+        }
+
+        .function {
+            color: var(--accent-color);
+        }
+
+        body.dark-mode .function {
+            color: #8B5CF6;
         }
 
         .tech-tags {
@@ -190,122 +571,718 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 10px;
-            margin-top: 20px;
+            margin-top: 50px;
         }
 
         .tech-tag {
-            background: rgba(45, 137, 239, 0.1);
+            background: rgba(74, 134, 232, 0.1);
             color: var(--primary-color);
-            padding: 5px 12px;
+            padding: 8px 16px;
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             font-weight: 500;
             transition: var(--transition);
         }
 
         body.dark-mode .tech-tag {
-            background: rgba(45, 137, 239, 0.2);
+            background: rgba(74, 134, 232, 0.2);
         }
 
         .tech-tag:hover {
-            background: rgba(45, 137, 239, 0.2);
+            background: rgba(74, 134, 232, 0.2);
             transform: translateY(-2px);
         }
 
-        .cta-button {
-            display: inline-block;
+        .team {
+            text-align: center;
+        }
+
+        .team-description {
+            max-width: 800px;
+            margin: 0 auto 50px;
+            text-align: center;
+            color: #666;
+        }
+
+        body.dark-mode .team-description {
+            color: #aaa;
+        }
+
+        .team-members {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .team-member {
+            background: var(--card-light);
+            border-radius: 12px;
+            width: 250px;
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+        }
+
+        body.dark-mode .team-member {
+            background: var(--card-dark);
+            box-shadow: var(--shadow-dark);
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .member-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            background: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-size: 3rem;
+        }
+
+        .member-info {
+            padding: 20px;
+        }
+
+        .member-name {
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--primary-dark);
+        }
+
+        body.dark-mode .member-name {
+            color: var(--primary-color);
+        }
+
+        .member-title {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .social-link {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #555;
+            transition: var(--transition);
+        }
+
+        body.dark-mode .social-link {
+            background: #1e293b;
+            color: #aaa;
+        }
+
+        .social-link:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .contact {
+            background: linear-gradient(135deg, rgba(74, 134, 232, 0.1), rgba(108, 92, 231, 0.1));
+            text-align: center;
+        }
+
+        body.dark-mode .contact {
+            background: linear-gradient(135deg, rgba(74, 134, 232, 0.05), rgba(108, 92, 231, 0.05));
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--card-light);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-light);
+        }
+
+        body.dark-mode .contact-form {
+            background: var(--card-dark);
+            box-shadow: var(--shadow-dark);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-light);
+        }
+
+        body.dark-mode .form-group label {
+            color: var(--text-dark);
+        }
+
+        .form-group input, 
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            background: var(--card-light);
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+
+        body.dark-mode .form-group input,
+        body.dark-mode .form-group textarea {
+            border-color: #334155;
+            background: var(--card-dark);
+            color: var(--text-dark);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(74, 134, 232, 0.2);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-button {
             background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
             color: white;
+            border: none;
             padding: 12px 28px;
-            border-radius: 30px;
-            font-weight: 500;
             font-size: 1rem;
-            margin-top: 30px;
+            font-weight: 500;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(74, 134, 232, 0.3);
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(74, 134, 232, 0.4);
+        }
+
+        footer {
+            background: var(--background-light);
+            color: #888;
+            padding: 60px 20px 30px;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        body.dark-mode footer {
+            background: var(--background-dark);
+            color: #777;
+            border-top-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+
+        body.dark-mode .footer-column h3 {
+            color: var(--text-dark);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #888;
             text-decoration: none;
             transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(45, 137, 239, 0.3);
         }
 
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(45, 137, 239, 0.4);
+        .footer-links a:hover {
+            color: var(--primary-color);
         }
 
-        .footer {
-            font-size: 0.8rem;
-            color: #888;
+        .copyright {
             text-align: center;
+            padding-top: 30px;
             margin-top: 30px;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            font-size: 0.9rem;
         }
 
-        body.dark-mode .footer {
-            color: #777;
+        body.dark-mode .copyright {
+            border-top-color: rgba(255, 255, 255, 0.05);
         }
 
         @media (max-width: 768px) {
-            .logo-card {
-                padding: 30px 20px;
-            }
-            
-            .features {
+            header {
                 flex-direction: column;
                 align-items: center;
+                gap: 20px;
             }
             
-            .feature {
-                max-width: 100%;
+            nav ul {
+                gap: 15px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .description {
+                font-size: 1rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .section {
+                padding: 60px 20px;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .contact-form {
+                padding: 30px 20px;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <button class="theme-toggle" id="themeToggle">🌙</button>
-    </header>
-    <div class="container">
-        <div class="logo-card">
-            <div class="logo-container">
-                <object data="nanominds_logo.svg" type="image/svg+xml" width="300" height="100">
-                    Your browser does not support SVG
-                </object>
-            </div>
-            <h1>Enterprise AI Powered by Tiny Models</h1>
-            <div class="description">
-                <p>Nanominds.ai specializes in building lightweight, efficient AI models that deliver enterprise-grade performance without the massive computational requirements. Our tiny models unlock new possibilities for scalable, cost-effective AI solutions across industries.</p>
-            </div>
-            
-            <div class="features">
-                <div class="feature">
-                    <h3>Tiny Footprint</h3>
-                    <p>Our models are 10-100x smaller than traditional solutions while maintaining comparable accuracy.</p>
+        <div class="logo-container">
+            <div class="custom-logo">
+                <div class="neural-logo">
+                    <div class="neural-connection connection-1"></div>
+                    <div class="neural-connection connection-2"></div>
+                    <div class="neural-connection connection-3"></div>
+                    <div class="neural-connection connection-4"></div>
                 </div>
-                <div class="feature">
-                    <h3>Enterprise Ready</h3>
-                    <p>Built with security, governance, and compliance in mind for seamless enterprise integration.</p>
-                </div>
-                <div class="feature">
-                    <h3>Edge Deployment</h3>
-                    <p>Run sophisticated AI directly on edge devices without cloud dependencies or latency.</p>
-                </div>
-            </div>
-            
-            <div class="tech-tags">
-                <span class="tech-tag">Tiny Machine Learning</span>
-                <span class="tech-tag">Enterprise AI</span>
-                <span class="tech-tag">Model Optimization</span>
-                <span class="tech-tag">Edge Computing</span>
-                <span class="tech-tag">Neural Networks</span>
-            </div>
-            
-            <button class="cta-button">Get Started with Tiny Models</button>
-            
-            <div class="footer">
-                &copy; 2025 Nanominds.ai. All rights reserved.
             </div>
         </div>
+        <nav>
+            <ul>
+                <li><a href="#features">Why Tiny AI?</a></li>
+                <li><a href="#use-cases">Possibilities</a></li>
+                <li><a href="#tech">Glimpse Inside</a></li>
+                <li><a href="#contact">Connect</a></li>
+            </ul>
+        </nav>
+        <button class="theme-toggle" id="themeToggle">🌙</button>
+    </header>
+    <div class="hero">
+        <h1>Artificial Programmable Intelligence. Reimagined. <span class="highlight">Miniaturized.</span></h1>
+        <div class="tagline">Enterprise-grade AI that fits in your pocket</div>
+        <div class="description">
+            <p>Forget massive models requiring data centers. Nanominds creates tiny, domain-specific AI that's 100x smaller yet equally powerful. These efficient, programmable micro-intelligences solve specific enterprise challenges with surgical precision while running on virtually any device.</p>
+        </div>
+        <div class="cta-buttons">
+            <a href="#contact" class="cta-button">Discover How</a>
+            <a href="#use-cases" class="cta-button secondary">See What's Possible</a>
+        </div>
     </div>
+
+    <section id="features" class="section">
+        <h2 class="section-title">Tiny AI. Enormous Potential.</h2>
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">⚡</div>
+                <h3>100x Smaller & Efficient</h3>
+                <p>Imagine AI so efficient it requires just megabytes instead of gigabytes—as small as 5MB—yet delivers astonishing performance within its specialized domain. Up to 100x more resource-efficient than general models.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🎯</div>
+                <h3>Task & Domain Specific</h3>
+                <p>Unlike generalists, our programmable micro-models understand the subtle language, patterns, and context of your specific domain with remarkable accuracy, focused precisely on your unique tasks.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🔒</div>
+                <h3>Your Data Stays Yours</h3>
+                <p>Run completely offline with no data leaving your device. No cloud dependencies. No privacy concerns. Just intelligence where you need it—ideal for sensitive enterprise environments.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📱</div>
+                <h3>Runs Anywhere</h3>
+                <p>From smartphones to IoT sensors to legacy hardware - deploy sophisticated, lightweight AI in places previously thought impossible. Integrate with existing enterprise systems seamlessly.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">💼</div>
+                <h3>Enterprise Ready</h3>
+                <p>Built for mission-critical enterprise applications where efficiency, reliability, and precision matter. Deployable across your organization with minimal infrastructure requirements.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="use-cases" class="section">
+        <h2 class="section-title">What Could You Build?</h2>
+        <div class="use-cases">
+            <div class="use-case">
+                <h3>Medical Diagnostician</h3>
+                <p>A 10MB lightweight AI that spots anomalies in medical images with specialist-level accuracy, running directly on imaging devices—even in remote areas without internet access.</p>
+            </div>
+            <div class="use-case">
+                <h3>Financial Guardian</h3>
+                <p>An efficient, task-specific AI that understands the language of finance, detecting fraud patterns in real-time using 95% less compute than traditional models while keeping sensitive data secure.</p>
+            </div>
+            <div class="use-case">
+                <h3>Manufacturing Oracle</h3>
+                <p>A programmable micro-model that predicts equipment failures before they happen by listening to subtle changes in machinery sounds, running directly on legacy systems with minimal resources.</p>
+            </div>
+            <div class="use-case">
+                <h3>Legal Assistant</h3>
+                <p>A domain-specific AI that reads contracts with the expertise of a veteran attorney, identifying risks and inconsistencies that human eyes might miss, all while using a fraction of the energy.</p>
+            </div>
+            <div class="use-case">
+                <h3>Enterprise Assistant</h3>
+                <p>A lightweight, programmable AI that integrates with your existing systems to automate workflows, analyze documents, and support decision-making—all while keeping data on-premises and requiring minimal infrastructure.</p>
+            </div>
+        </div>
+        <div class="mystery-box">
+            <div class="question-mark">?</div>
+            <p>What would you build with AI that fits in your pocket?</p>
+        </div>
+    </section>
+
+    <style>
+        .mystery-box {
+            margin-top: 60px;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .mystery-box:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-light), 0 10px 40px rgba(99, 102, 241, 0.2);
+        }
+        
+        body.dark-mode .mystery-box:hover {
+            box-shadow: var(--shadow-dark), 0 10px 40px rgba(99, 102, 241, 0.3);
+        }
+        
+        .mystery-box:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                transparent, 
+                rgba(99, 102, 241, 0.1), 
+                transparent 30%
+            );
+            animation: rotate 4s linear infinite;
+            z-index: -1;
+        }
+        
+        @keyframes rotate {
+            100% {
+                transform: rotate(1turn);
+            }
+        }
+        
+        .question-mark {
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
+        }
+        
+        .mystery-box p {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        body.dark-mode .mystery-box p {
+            color: var(--text-dark);
+        }
+        
+        .highlight {
+            color: var(--accent-color);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .highlight:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            background-color: rgba(139, 92, 246, 0.2);
+            z-index: -1;
+            transform: skewX(-15deg);
+        }
+        
+        /* Logo styles */
+        .custom-logo {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+        
+        .neural-logo {
+            display: inline-block;
+            width: 180px;
+            height: 60px;
+            position: relative;
+            background: var(--card-light);
+            border-radius: 8px;
+            box-shadow: var(--shadow-light);
+            overflow: hidden;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+        
+        body.dark-mode .neural-logo {
+            background: var(--card-dark);
+            box-shadow: var(--shadow-dark);
+        }
+        
+        .neural-logo::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.4) 0, transparent 6px),
+                radial-gradient(circle at 40% 70%, rgba(139, 92, 246, 0.4) 0, transparent 6px),
+                radial-gradient(circle at 60% 20%, rgba(16, 185, 129, 0.4) 0, transparent 6px),
+                radial-gradient(circle at 80% 60%, rgba(99, 102, 241, 0.4) 0, transparent 6px);
+        }
+        
+        .neural-logo::after {
+            content: "nanominds";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            letter-spacing: -0.5px;
+            color: var(--primary-dark);
+            text-transform: lowercase;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        body.dark-mode .neural-logo::after {
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Neural connection animation */
+        .neural-connection {
+            position: absolute;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            height: 1px;
+            opacity: 0;
+            animation: pulse 4s infinite;
+        }
+        
+        .connection-1 {
+            width: 30px;
+            transform: rotate(45deg);
+            top: 20px;
+            left: 25px;
+            animation-delay: 0s;
+        }
+        
+        .connection-2 {
+            width: 40px;
+            transform: rotate(-30deg);
+            top: 35px;
+            left: 65px;
+            animation-delay: 1s;
+        }
+        
+        .connection-3 {
+            width: 25px;
+            transform: rotate(60deg);
+            top: 40px;
+            left: 110px;
+            animation-delay: 2s;
+        }
+        
+        .connection-4 {
+            width: 35px;
+            transform: rotate(-15deg);
+            top: 15px;
+            left: 90px;
+            animation-delay: 3s;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 0.8; }
+        }
+    </style>
+    
+    <section id="tech" class="tech-stack">
+        <div class="stack-container">
+            <h2 class="section-title">Peek Under the Hood</h2>
+            <div class="description" style="text-align: center; margin-bottom: 40px;">
+                <p>A glimpse of the technology that makes the impossible possible: programmable, domain-specific intelligence that rivals its enormous cousins while being orders of magnitude more efficient.</p>
+            </div>
+            <div class="code-example">
+                <div class="code-title">micromodel.py</div>
+                <span class="code-line"><span class="keyword">from</span> nanominds.core <span class="keyword">import</span> MicroArchitect, KnowledgeDistiller</span>
+                <span class="code-line"><span class="keyword">from</span> nanominds.optimizer <span class="keyword">import</span> BinaryQuantizer, SynapticPruner</span>
+                <span class="code-line"><span class="keyword">import</span> nanominds.domains <span class="keyword">as</span> domains</span>
+                <span class="code-line"></span>
+                <span class="code-line"><span class="comment"># The secret sauce behind our programmable micro-intelligence</span></span>
+                <span class="code-line"><span class="keyword">def</span> <span class="function">create_micromodel</span>(domain=<span class="string">"medical_imaging"</span>, task=<span class="string">"anomaly_detection"</span>, target_device=<span class="string">"enterprise_server"</span>):</span>
+                <span class="code-line">    <span class="comment"># 1. Extract domain and task-specific patterns</span></span>
+                <span class="code-line">    domain_patterns = domains.extract_core_patterns(domain, task)</span>
+                <span class="code-line">    </span>
+                <span class="code-line">    <span class="comment"># 2. Design minimal architecture that preserves accuracy while minimizing size</span></span>
+                <span class="code-line">    micro_architecture = MicroArchitect.design(</span>
+                <span class="code-line">        patterns=domain_patterns,</span>
+                <span class="code-line">        complexity_budget=target_device.max_complexity,</span>
+                <span class="code-line">        intelligence_threshold=0.97,  <span class="comment"># 97% of full model capability</span></span>
+                <span class="code-line">        efficiency_target=<span class="string">"ultra_lightweight"</span>  <span class="comment"># Prioritize extreme efficiency</span></span>
+                <span class="code-line">    )</span>
+                <span class="code-line">    </span>
+                <span class="code-line">    <span class="comment"># 3. Distill specialized knowledge from large foundation model</span></span>
+                <span class="code-line">    tiny_model = KnowledgeDistiller.transfer(</span>
+                <span class="code-line">        source=<span class="string">"foundation_model_v3"</span>,</span>
+                <span class="code-line">        target_architecture=micro_architecture,</span>
+                <span class="code-line">        domain_focus=domain_patterns,</span>
+                <span class="code-line">        programmable_interfaces=[<span class="string">"api"</span>, <span class="string">"sdk"</span>, <span class="string">"enterprise_connect"</span>]</span>
+                <span class="code-line">    )</span>
+                <span class="code-line">    </span>
+                <span class="code-line">    <span class="comment"># 4. Apply advanced compression and efficiency techniques</span></span>
+                <span class="code-line">    micro_model = SynapticPruner.optimize(</span>
+                <span class="code-line">        model=tiny_model,</span>
+                <span class="code-line">        quantization=BinaryQuantizer(precision=<span class="string">"adaptive"</span>),</span>
+                <span class="code-line">        target_size_mb=5,  <span class="comment"># Yes, just 5MB!</span></span>
+                <span class="code-line">        compute_reduction=0.95  <span class="comment"># 95% less compute than standard models</span></span>
+                <span class="code-line">    )</span>
+                <span class="code-line">    </span>
+                <span class="code-line">    <span class="keyword">return</span> micro_model  <span class="comment"># An enterprise-ready, domain-specific AI that fits in your pocket</span></span>
+            </div>
+            <div class="tech-tags">
+                <span class="tech-tag">Lightweight Models</span>
+                <span class="tech-tag">Domain-Specific AI</span>
+                <span class="tech-tag">Efficient Neural Networks</span>
+                <span class="tech-tag">Programmable Intelligence</span>
+                <span class="tech-tag">Task-Specific Models</span>
+                <span class="tech-tag">Enterprise AI</span>
+            </div>
+            
+            <div class="mystery-box" style="margin-top: 50px; margin-bottom: 50px;">
+                <div class="question-mark">...</div>
+                <p>There's more to our technology than we can publicly reveal</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="contact" class="section contact">
+        <h2 class="section-title">Ready to Transform Your Enterprise with Programmable Intelligence?</h2>
+        <div class="contact-form">
+            <form action="mailto:omer@nanominds.ai" method="post" enctype="text/plain">
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="email" placeholder="Where can we reach you?" required>
+                </div>
+                <div class="form-group">
+                    <label for="industry">Your Industry</label>
+                    <input type="text" id="industry" name="industry" placeholder="What industry do you operate in?">
+                </div>
+                <div class="form-group">
+                    <label for="usecase">Primary Use Case</label>
+                    <input type="text" id="usecase" name="usecase" placeholder="What specific task or domain are you targeting?">
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Enterprise Vision</label>
+                    <textarea id="message" name="message" placeholder="How would your organization benefit from efficient, programmable AI that's 10-100x smaller than traditional models?" required></textarea>
+                </div>
+                <button type="submit" class="submit-button">Begin Your Enterprise AI Transformation</button>
+            </form>
+            <div class="whisper" style="text-align: center; margin-top: 20px; font-size: 0.9rem; opacity: 0.7;">
+                Limited enterprise partner spots available. Early access by invitation only.
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div style="text-align: center; padding: 40px 20px;">
+            <div style="margin-bottom: 20px;">
+                <div class="custom-logo" style="transform: scale(0.8);">
+                    <div class="neural-logo">
+                        <div class="neural-connection connection-1"></div>
+                        <div class="neural-connection connection-2"></div>
+                        <div class="neural-connection connection-3"></div>
+                        <div class="neural-connection connection-4"></div>
+                    </div>
+                </div>
+            </div>
+            <div style="font-size: 0.9rem; color: #888; max-width: 600px; margin: 0 auto;">
+                Artificial Programmable Intelligence. Lightweight. Domain-Specific. Enterprise-Ready.
+            </div>
+            <div class="copyright" style="margin-top: 30px; border-top: none; padding-top: 0;">
+                &copy; 2025 Nanominds.ai
+            </div>
+        </div>
+    </footer>
 
     <script>
         // Dark mode toggle
@@ -329,6 +1306,17 @@
                 themeToggle.textContent = '🌙';
             }
         });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
     </script>
 </body>
-</html> 
+</html>

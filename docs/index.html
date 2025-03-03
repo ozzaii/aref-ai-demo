@@ -913,10 +913,10 @@
         <button class="theme-toggle" id="themeToggle">🌙</button>
     </header>
     <div class="hero">
-        <h1>Artificial Intelligence. Reimagined. <span class="highlight">Miniaturized.</span></h1>
-        <div class="tagline">What if the most powerful AI fits in your pocket?</div>
+        <h1>Artificial Programmable Intelligence. Reimagined. <span class="highlight">Miniaturized.</span></h1>
+        <div class="tagline">Enterprise-grade AI that fits in your pocket</div>
         <div class="description">
-            <p>Forget massive models requiring data centers. Nanominds creates tiny, domain-specific AI that's 100x smaller yet equally powerful. These micro-intelligences solve specific problems with surgical precision while running on virtually any device.</p>
+            <p>Forget massive models requiring data centers. Nanominds creates tiny, domain-specific AI that's 100x smaller yet equally powerful. These efficient, programmable micro-intelligences solve specific enterprise challenges with surgical precision while running on virtually any device.</p>
         </div>
         <div class="cta-buttons">
             <a href="#contact" class="cta-button">Discover How</a>
@@ -929,23 +929,28 @@
         <div class="features">
             <div class="feature">
                 <div class="feature-icon">⚡</div>
-                <h3>100x Smaller</h3>
-                <p>Imagine AI so compact it requires just megabytes instead of gigabytes, yet delivers astonishing performance within its specialized domain.</p>
+                <h3>100x Smaller & Efficient</h3>
+                <p>Imagine AI so efficient it requires just megabytes instead of gigabytes—as small as 5MB—yet delivers astonishing performance within its specialized domain. Up to 100x more resource-efficient than general models.</p>
             </div>
             <div class="feature">
                 <div class="feature-icon">🎯</div>
-                <h3>Surgical Precision</h3>
-                <p>Unlike generalists, our micro-models understand the subtle language, patterns, and context of your specific field with remarkable accuracy.</p>
+                <h3>Task & Domain Specific</h3>
+                <p>Unlike generalists, our programmable micro-models understand the subtle language, patterns, and context of your specific domain with remarkable accuracy, focused precisely on your unique tasks.</p>
             </div>
             <div class="feature">
                 <div class="feature-icon">🔒</div>
                 <h3>Your Data Stays Yours</h3>
-                <p>Run completely offline with no data leaving your device. No cloud dependencies. No privacy concerns. Just intelligence where you need it.</p>
+                <p>Run completely offline with no data leaving your device. No cloud dependencies. No privacy concerns. Just intelligence where you need it—ideal for sensitive enterprise environments.</p>
             </div>
             <div class="feature">
                 <div class="feature-icon">📱</div>
                 <h3>Runs Anywhere</h3>
-                <p>From smartphones to IoT sensors to legacy hardware - deploy sophisticated AI in places previously thought impossible.</p>
+                <p>From smartphones to IoT sensors to legacy hardware - deploy sophisticated, lightweight AI in places previously thought impossible. Integrate with existing enterprise systems seamlessly.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">💼</div>
+                <h3>Enterprise Ready</h3>
+                <p>Built for mission-critical enterprise applications where efficiency, reliability, and precision matter. Deployable across your organization with minimal infrastructure requirements.</p>
             </div>
         </div>
     </section>
@@ -955,19 +960,23 @@
         <div class="use-cases">
             <div class="use-case">
                 <h3>Medical Diagnostician</h3>
-                <p>A pocket-sized AI that spots anomalies in medical images with specialist-level accuracy, even in remote areas without internet access.</p>
+                <p>A 10MB lightweight AI that spots anomalies in medical images with specialist-level accuracy, running directly on imaging devices—even in remote areas without internet access.</p>
             </div>
             <div class="use-case">
                 <h3>Financial Guardian</h3>
-                <p>An AI that understands the language of finance, detecting fraud patterns in real-time on any device without sending sensitive data externally.</p>
+                <p>An efficient, task-specific AI that understands the language of finance, detecting fraud patterns in real-time using 95% less compute than traditional models while keeping sensitive data secure.</p>
             </div>
             <div class="use-case">
                 <h3>Manufacturing Oracle</h3>
-                <p>A micro-model that predicts equipment failures before they happen by listening to subtle changes in machinery sounds, running directly on legacy systems.</p>
+                <p>A programmable micro-model that predicts equipment failures before they happen by listening to subtle changes in machinery sounds, running directly on legacy systems with minimal resources.</p>
             </div>
             <div class="use-case">
                 <h3>Legal Assistant</h3>
-                <p>A specialized AI that reads contracts with the expertise of a veteran attorney, identifying risks and inconsistencies that human eyes might miss.</p>
+                <p>A domain-specific AI that reads contracts with the expertise of a veteran attorney, identifying risks and inconsistencies that human eyes might miss, all while using a fraction of the energy.</p>
+            </div>
+            <div class="use-case">
+                <h3>Enterprise Assistant</h3>
+                <p>A lightweight, programmable AI that integrates with your existing systems to automate workflows, analyze documents, and support decision-making—all while keeping data on-premises and requiring minimal infrastructure.</p>
             </div>
         </div>
         <div class="mystery-box">
@@ -1170,7 +1179,7 @@
         <div class="stack-container">
             <h2 class="section-title">Peek Under the Hood</h2>
             <div class="description" style="text-align: center; margin-bottom: 40px;">
-                <p>A glimpse of the technology that makes the impossible possible: miniaturized intelligence that rivals its enormous cousins.</p>
+                <p>A glimpse of the technology that makes the impossible possible: programmable, domain-specific intelligence that rivals its enormous cousins while being orders of magnitude more efficient.</p>
             </div>
             <div class="code-example">
                 <div class="code-title">micromodel.py</div>
@@ -1178,34 +1187,46 @@
                 <span class="code-line"><span class="keyword">from</span> nanominds.optimizer <span class="keyword">import</span> BinaryQuantizer, SynapticPruner</span>
                 <span class="code-line"><span class="keyword">import</span> nanominds.domains <span class="keyword">as</span> domains</span>
                 <span class="code-line"></span>
-                <span class="code-line"><span class="comment"># The secret sauce behind our micro-intelligence</span></span>
-                <span class="code-line"><span class="keyword">def</span> <span class="function">create_micromodel</span>(domain=<span class="string">"medical_imaging"</span>, target_device=<span class="string">"smartphone"</span>):</span>
-                <span class="code-line">    <span class="comment"># 1. Extract domain-specific patterns</span></span>
-                <span class="code-line">    domain_patterns = domains.extract_core_patterns(domain)</span>
+                <span class="code-line"><span class="comment"># The secret sauce behind our programmable micro-intelligence</span></span>
+                <span class="code-line"><span class="keyword">def</span> <span class="function">create_micromodel</span>(domain=<span class="string">"medical_imaging"</span>, task=<span class="string">"anomaly_detection"</span>, target_device=<span class="string">"enterprise_server"</span>):</span>
+                <span class="code-line">    <span class="comment"># 1. Extract domain and task-specific patterns</span></span>
+                <span class="code-line">    domain_patterns = domains.extract_core_patterns(domain, task)</span>
                 <span class="code-line">    </span>
-                <span class="code-line">    <span class="comment"># 2. Design minimal architecture that preserves accuracy</span></span>
+                <span class="code-line">    <span class="comment"># 2. Design minimal architecture that preserves accuracy while minimizing size</span></span>
                 <span class="code-line">    micro_architecture = MicroArchitect.design(</span>
                 <span class="code-line">        patterns=domain_patterns,</span>
                 <span class="code-line">        complexity_budget=target_device.max_complexity,</span>
-                <span class="code-line">        intelligence_threshold=0.95  <span class="comment"># 95% of full model capability</span></span>
+                <span class="code-line">        intelligence_threshold=0.97,  <span class="comment"># 97% of full model capability</span></span>
+                <span class="code-line">        efficiency_target=<span class="string">"ultra_lightweight"</span>  <span class="comment"># Prioritize extreme efficiency</span></span>
                 <span class="code-line">    )</span>
                 <span class="code-line">    </span>
-                <span class="code-line">    <span class="comment"># 3. Distill knowledge from large foundation model</span></span>
+                <span class="code-line">    <span class="comment"># 3. Distill specialized knowledge from large foundation model</span></span>
                 <span class="code-line">    tiny_model = KnowledgeDistiller.transfer(</span>
                 <span class="code-line">        source=<span class="string">"foundation_model_v3"</span>,</span>
                 <span class="code-line">        target_architecture=micro_architecture,</span>
-                <span class="code-line">        domain_focus=domain_patterns</span>
+                <span class="code-line">        domain_focus=domain_patterns,</span>
+                <span class="code-line">        programmable_interfaces=[<span class="string">"api"</span>, <span class="string">"sdk"</span>, <span class="string">"enterprise_connect"</span>]</span>
                 <span class="code-line">    )</span>
                 <span class="code-line">    </span>
-                <span class="code-line">    <span class="comment"># 4. Apply advanced compression techniques</span></span>
+                <span class="code-line">    <span class="comment"># 4. Apply advanced compression and efficiency techniques</span></span>
                 <span class="code-line">    micro_model = SynapticPruner.optimize(</span>
                 <span class="code-line">        model=tiny_model,</span>
-                <span class="code-line">        quantization=BinaryQuantizer(),</span>
-                <span class="code-line">        target_size_mb=5  <span class="comment"># Yes, just 5MB!</span></span>
+                <span class="code-line">        quantization=BinaryQuantizer(precision=<span class="string">"adaptive"</span>),</span>
+                <span class="code-line">        target_size_mb=5,  <span class="comment"># Yes, just 5MB!</span></span>
+                <span class="code-line">        compute_reduction=0.95  <span class="comment"># 95% less compute than standard models</span></span>
                 <span class="code-line">    )</span>
                 <span class="code-line">    </span>
-                <span class="code-line">    <span class="keyword">return</span> micro_model  <span class="comment"># A specialist AI that fits in your pocket</span></span>
+                <span class="code-line">    <span class="keyword">return</span> micro_model  <span class="comment"># An enterprise-ready, domain-specific AI that fits in your pocket</span></span>
             </div>
+            <div class="tech-tags">
+                <span class="tech-tag">Lightweight Models</span>
+                <span class="tech-tag">Domain-Specific AI</span>
+                <span class="tech-tag">Efficient Neural Networks</span>
+                <span class="tech-tag">Programmable Intelligence</span>
+                <span class="tech-tag">Task-Specific Models</span>
+                <span class="tech-tag">Enterprise AI</span>
+            </div>
+            
             <div class="mystery-box" style="margin-top: 50px; margin-bottom: 50px;">
                 <div class="question-mark">...</div>
                 <p>There's more to our technology than we can publicly reveal</p>
@@ -1215,7 +1236,7 @@
 
 
     <section id="contact" class="section contact">
-        <h2 class="section-title">Ready to Miniaturize Intelligence?</h2>
+        <h2 class="section-title">Ready to Transform Your Enterprise with Programmable Intelligence?</h2>
         <div class="contact-form">
             <form action="mailto:omer@nanominds.ai" method="post" enctype="text/plain">
                 <div class="form-group">
@@ -1224,16 +1245,20 @@
                 </div>
                 <div class="form-group">
                     <label for="industry">Your Industry</label>
-                    <input type="text" id="industry" name="industry" placeholder="What field do you work in?">
+                    <input type="text" id="industry" name="industry" placeholder="What industry do you operate in?">
                 </div>
                 <div class="form-group">
-                    <label for="message">Your Vision</label>
-                    <textarea id="message" name="message" placeholder="What would you like to build with tiny AI that fits in your pocket?" required></textarea>
+                    <label for="usecase">Primary Use Case</label>
+                    <input type="text" id="usecase" name="usecase" placeholder="What specific task or domain are you targeting?">
                 </div>
-                <button type="submit" class="submit-button">Begin The Journey</button>
+                <div class="form-group">
+                    <label for="message">Your Enterprise Vision</label>
+                    <textarea id="message" name="message" placeholder="How would your organization benefit from efficient, programmable AI that's 10-100x smaller than traditional models?" required></textarea>
+                </div>
+                <button type="submit" class="submit-button">Begin Your Enterprise AI Transformation</button>
             </form>
             <div class="whisper" style="text-align: center; margin-top: 20px; font-size: 0.9rem; opacity: 0.7;">
-                Limited partner spots available. Early access by invitation only.
+                Limited enterprise partner spots available. Early access by invitation only.
             </div>
         </div>
     </section>
@@ -1251,7 +1276,7 @@
                 </div>
             </div>
             <div style="font-size: 0.9rem; color: #888; max-width: 600px; margin: 0 auto;">
-                Intelligence. Miniaturized.
+                Artificial Programmable Intelligence. Lightweight. Domain-Specific. Enterprise-Ready.
             </div>
             <div class="copyright" style="margin-top: 30px; border-top: none; padding-top: 0;">
                 &copy; 2025 Nanominds.ai
